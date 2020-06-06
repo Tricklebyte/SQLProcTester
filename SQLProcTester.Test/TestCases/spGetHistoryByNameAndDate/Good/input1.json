@@ -1,0 +1,26 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spGetHistoryByNameAndDate",
+  "Parameters": [
+    {
+      "Name": "lastName",
+      "Type": "NvarChar(50)",
+      "Value": "Barker"
+    },
+    {
+      "Name": "firstName",
+      "Type": "NvarChar(50)",
+      "Value": "Bob"
+    },
+    {
+      "Name": "StartDate",
+      "Type": "DateTime",
+      "Value": "2018-01-01 00:00:00"
+    },
+    {
+      "Name": "EndDate",
+      "Type": "DateTime",
+      "Value": "2018-09-01 00:00:00"
+    }
+  ]
+}

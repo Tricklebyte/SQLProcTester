@@ -1,0 +1,36 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spGetHistoryByAll",
+  "Parameters": [
+    {
+      "Name": "lastName",
+      "Type": "Nvarchar",
+      "Value": "Blazier"
+    },
+    {
+      "Name": "firstName",
+      "Type": "Nvarchar",
+      "Value": "Blake"
+    },
+    {
+      "Name": "DOB",
+      "Type": "Datetime",
+      "Value": "1978-02-01"
+    },
+    {
+      "Name": "IsContractor",
+      "Type": "Bit",
+      "Value": "0"
+    },
+    {
+      "Name": "StartDate",
+      "Type": "Datetime2",
+      "Value": "2020-01-01"
+    },
+    {
+      "Name": "Position",
+      "Type": "Var",
+      "Value": "Intergalactic Surfer"
+    }
+  ]
+}

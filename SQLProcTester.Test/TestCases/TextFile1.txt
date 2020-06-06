@@ -1,0 +1,80 @@
+﻿Procedure
+int - Emp.Id Pos.Id
+nvarchar - LastName, firstname
+Datetime2 - StartDate,EndDate
+Datetime - Birthdate
+Bit	- Contractor
+varchar    - Position.Description
+
+--------------------------------
+Get PositionHistory by type and age (@IsContractor bit, @minBirthDate datetime)
+Case Contractors over 21 years
+Case Perms under 65
+
+----------------------------------------------------------
+Get PositionHistory for one Employee by name LastName And FirstName for DateRange (@LastName nvarChar(50),@FirstName nvarChar(50),@StartDate DateTime2, @EndDate DateTime2)
+Case -  Barker Bob 2018-01-01 2020-02-03
+Case -  Bobier	Basil 2016-01-01 2020-01-01
+-----------------------------
+Get PositionHistoryByTypeAndDate(bit , datetime2, datetime2)
+	Case - Contractor for Date Range 1 2016-01-01 2020-01-01
+	Case - Permenant for Date Range  0 2016-01-01 2020-01-01
+--------------------------------------------
+Get CurrentPosition for one Employee by Id (int)
+
+Get CurrentPosition for one Employee by LastName,FirstName (nvarchar,nvarchar)
+Get Employee History for Position Description (varchar)
+Get GetByTypeAndPosition (bit, varchar)
+Get by LastName, FirstName, ()
+
+[spGetCurrentPositionById]
+[spGetCurrentPositionByName]
+[spGetHistoryByNameAndDateRange]
+[spGetHistoryByPosition]
+[spGetHistoryByTypeAndDateRange]
+[spGetHistoryByTypeAndMinDOB]
+
+{
+  "Duration": null,
+  "ReturnValue": 1,
+  "ResultText": null,
+  "RowsAffected": null,
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "Id",
+          "Value": "3"
+        },
+        {
+          "Key": "LastName",
+          "Value": "Barker"
+        },
+        {
+          "Key": "FirstName",
+          "Value": "Bob"
+        },
+        {
+          "Key": "DateOfBirth",
+          "Value": "1/2/1968 12:00:00 AM"
+        },
+        {
+          "Key": "IsContractor",
+          "Value": "True"
+        },
+        {
+          "Key": "Position",
+          "Value": "Bodhisattva"
+        },
+        {
+          "Key": "StartDate",
+          "Value": "2/3/2020 12:00:00 AM"
+        },
+        {
+          "Key": "EndDate",
+          "Value": ""
+        }
+      ]
+    }
+  ]
+}

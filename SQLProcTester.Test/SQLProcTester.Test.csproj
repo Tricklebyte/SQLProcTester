@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SQLProcTester\SQLProcTester.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="TestCases\spGetCurrentByName\Good\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetCurrentByName\Good\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetCurrentByName\Good\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetCurrentByName\Good\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetCurrentByName\MaxLengthExceeded\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetCurrentByName\MissingParameter\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByAll\Good\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByAll\Good\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByAll\Good\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByAll\Good\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryById\Good\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryById\Good\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryById\Good\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryById\Good\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByNameAndDate\Good\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByNameAndDate\Good\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByNameAndDate\Good\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\spGetHistoryByNameAndDate\Good\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="TestCases\spGetCurrentByName\DurationExceeded\" />
+    <Folder Include="TestCases\spNonQueryDrop\" />
+    <Folder Include="TestCases\spNonQueryUpdate\" />
+    <Folder Include="TestCases\spNonQueryInsert\" />
+    <Folder Include="TestCases\spNonQueryDelete\" />
+    <Folder Include="TestCases\spCreate\" />
+    <Folder Include="TestCases\spGetHistoryByAll\InvalidParameterType\" />
+    <Folder Include="TestCases\spGetHistoryByAll\SQLError\" />
+  </ItemGroup>
+
+</Project>

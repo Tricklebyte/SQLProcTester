@@ -1,0 +1,18 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "CommandTimeout": 0,
+  "NonQuery": false,
+  "SpName": "spGetCurrentByName",
+  "SqlParams": [
+    {
+      "Name": "LastName",
+      "Type": "NvarChar",
+      "Value": "Bobbin"
+    },
+    {
+      "Name": "FirstName",
+      "Type": "NvarChar",
+      "Value": "Babaduk"
+    }
+  ]
+}

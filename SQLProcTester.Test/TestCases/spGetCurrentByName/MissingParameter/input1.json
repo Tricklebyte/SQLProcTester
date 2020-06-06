@@ -1,0 +1,16 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spGetCurrentPositionByName",
+  "Parameters": [
+    {
+      "Name": "lastName",
+      "Type": "NvarChar(50)",
+      "Value": "Barker"
+    },
+    {
+      "Name": "firstName",
+      "Type": "NvarChar(50)",
+      "Value": "Bob"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "Duration": 33718,
+  "ReturnValue": 1,
+  "ResultText": null,
+  "RowsAffected": null,
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "Id",
+          "Value": "25"
+        },
+        {
+          "Key": "LastName",
+          "Value": "Bobbin"
+        },
+        {
+          "Key": "FirstName",
+          "Value": "Babaduk"
+        },
+        {
+          "Key": "DateOfBirth",
+          "Value": "8/23/1990 12:00:00 AM"
+        },
+        {
+          "Key": "IsContractor",
+          "Value": "True"
+        },
+        {
+          "Key": "Position",
+          "Value": "Elected Buffoon"
+        },
+        {
+          "Key": "StartDate",
+          "Value": "1/1/2020 12:00:00 AM"
+        },
+        {
+          "Key": "EndDate",
+          "Value": ""
+        }
+      ]
+    }
+  ]
+}

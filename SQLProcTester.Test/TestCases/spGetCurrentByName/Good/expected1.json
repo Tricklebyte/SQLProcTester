@@ -1,0 +1,45 @@
+{
+  "Duration": 0,
+  "ReturnValue": 1,
+  "ResultText": null,
+  "RowsAffected": null,
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "Id",
+          "Value": "3"
+        },
+        {
+          "Key": "LastName",
+          "Value": "Barker"
+        },
+        {
+          "Key": "FirstName",
+          "Value": "Bob"
+        },
+        {
+          "Key": "DateOfBirth",
+          "Value": "1/2/1968 12:00:00 AM"
+        },
+        {
+          "Key": "IsContractor",
+          "Value": "True"
+        },
+        {
+          "Key": "Position",
+          "Value": "Bodhisattva"
+        },
+        {
+          "Key": "StartDate",
+          "Value": "2/3/2020 12:00:00 AM"
+        },
+        {
+          "Key": "EndDate",
+          "Value": ""
+        }
+      ]
+    }
+  ]
+
+}
