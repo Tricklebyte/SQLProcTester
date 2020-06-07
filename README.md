@@ -21,5 +21,5 @@ Static method executes a sql stored procedure and returns a results model that m
 * **CommandTImeout** - the number of seconds to wait before terminating the attempt to execute a command
 * **SPName** - the name of the stored procedure to run.
 * **SqlParams** - list of simplified SQL parameters. Will be converted to full SQL Parameter objects during PrepRun. 
-
+* **NonQuery** (bool) - 
 ```
