@@ -15,7 +15,7 @@ Static method executes a sql stored procedure and returns a results model that m
 <br/> Execute input model - contains all required information to run the stored procedure
 
 
-### SpExecInput
+#### SpExecInput
 * **ConnectionString (string)** - the connection string to the SQL Server database containing the stored procedure under test
 * **CommandTImeout (int)** - the number of seconds to wait before terminating the attempt to execute a command (0=infinite)
 * **SPName (string)** - the name of the stored procedure to run.
