@@ -10,12 +10,10 @@ Static method executes a sql stored procedure and returns a results model that m
  public static SpExecResult Execute(SpExecInput input)
 ```
 
-### Parameters
-**input** SpExecInput
+### Input Model
+ **SQLProcTester.SpExecInput**
 <br/> Execute input model - contains all required information to run the stored procedure
 
-
-#### SpExecInput
 * **ConnectionString (string)** - the connection string to the SQL Server database containing the stored procedure under test
 * **CommandTImeout (int)** - the number of seconds to wait before terminating the attempt to execute a command (0=infinite)
 * **SPName (string)** - the name of the stored procedure to run.
@@ -45,8 +43,6 @@ Static method executes a sql stored procedure and returns a results model that m
   ]
 }
 ```
-## Return Value
-**The Execute method returns model *SQLProcTester.SpExecResult***
 
 
 ## Default Input Values
@@ -54,4 +50,7 @@ Static method executes a sql stored procedure and returns a results model that m
 <br/>**Values of the input model override the values of the Class Properties**
 <br/>This allows you to set an input (like Connection String) once for all tests and not have to repeat that value in all test cases.
 <br/> 
+
+## Return Model
+**The Execute method returns model *SQLProcTester.SpExecResult***
 
