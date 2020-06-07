@@ -45,11 +45,13 @@ Static method executes a sql stored procedure and returns a results model that m
   ]
 }
 ```
+## Return Value
+**The Execute method returns model *SQLProcTester.SpExecResult***
+
+
 ## Default Input Values
 ### All Input properties have corresponding Class Properties of SpSqlClient
 <br/>**Values of the input model override the values of the Class Properties**
 <br/>This allows you to set an input (like Connection String) once for all tests and not have to repeat that value in all test cases.
 <br/> 
 
-## Return Value
-**The Execute method returns model *SQLProcTester.SpExecResult
