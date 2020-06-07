@@ -22,5 +22,5 @@ Static method executes a sql stored procedure and returns a results model that m
 * **SPName** - the name of the stored procedure to run.
 * **SqlParams** - list of simplified SQL parameters. Will be converted to full SQL Parameter objects during PrepRun. 
 * **NonQuery** (bool) 
-** when true, no row results will be returned from the database and the number of records affected will be written to SpExecResult.ReturnValue.
+   * when true, no row results will be returned from the database and the number of records affected will be written to SpExecResult.ReturnValue.
 ```
