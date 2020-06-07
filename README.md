@@ -18,7 +18,7 @@ Static method executes a sql stored procedure and returns a results model that m
 
 ### SpExecInput
 * **ConnectionString** *string* - the connection string to the SQL Server database containing the stored procedure under test
-* **CommandTImeout** *string* - the number of seconds to wait before terminating the attempt to execute a command (0=infinite)
+* **CommandTImeout** ***int*** - the number of seconds to wait before terminating the attempt to execute a command (0=infinite)
 * **SPName** - the name of the stored procedure to run.
 * **SqlParams** - list of simplified SQL parameters. Will be converted to full SQL Parameter objects during PrepRun. 
 * **NonQuery** *bool*
