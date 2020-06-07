@@ -24,8 +24,7 @@ Static method executes a sql stored procedure and returns a results model that m
    * When true, no row results will be returned from the database and the number of records affected will be written to SpExecResult.ReturnValue.
    * When false, row results will be written to SpExecResult.DbRows and the ReturnValue of the stored procedure will be written to SpExecResult.ReturnValue.
 
-   
-#### SpExecInput
+
 ```json
 {
   "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
@@ -49,3 +48,4 @@ Static method executes a sql stored procedure and returns a results model that m
 ## Default Input Values
 ### All Input properties have corresponding Class Properties of SpSqlClient
 <br/>**Values of the input model override the values of the Class Properties**
+<br/>
