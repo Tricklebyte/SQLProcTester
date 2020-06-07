@@ -47,5 +47,5 @@ Static method executes a sql stored procedure and returns a results model that m
 }
 ```
 ## Default Input Values
-**All Input properties have corresponding Class Properties of SpSqlClient**
+### All Input properties have corresponding Class Properties of SpSqlClient
 <br/>**Values of the input model override the values of the Class Properties**
