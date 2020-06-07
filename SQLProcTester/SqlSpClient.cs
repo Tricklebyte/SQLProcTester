@@ -140,7 +140,6 @@ namespace SQLProcTester
                     {
                         case "DATETIME":
                         case "DATETIME2":
-                            //convert value from String to DT find in emma unit tests, or config core inline date string theory
                             sqlParam.SqlDbType = SqlDbType.DateTime;
                             sqlParam.Value = Convert.ToDateTime(input.Value);
                             break;
