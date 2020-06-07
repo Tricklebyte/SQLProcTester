@@ -44,7 +44,6 @@ Static method executes a sql stored procedure and returns a results model that m
 }
 ```
 
-
 ## Default Input Values
 ### All Input properties have corresponding Class Properties of SpSqlClient
 <br/>**Values of the input model override the values of the Class Properties**
@@ -52,5 +51,11 @@ Static method executes a sql stored procedure and returns a results model that m
 <br/> 
 
 ## Return Model
-**The Execute method returns model *SQLProcTester.SpExecResult***
+  **SQLProcTester.SpExecResult**
+<br/> Execute Result Model - Contains execution information and row results when applicable
+
+* **Duration (long)** - Description of the Duration field
+* **ReturnValue (int)** - 
+* **ResultText (string)** - 
+* **DBRows (List\<DbRow>)** - 
 
