@@ -4,7 +4,7 @@ Unit test SQL Stored Procedures without EntityFramework
 * Faster to set up and easier to use than Microsoft SQL Server Data Tools
 
 ## SQLProcTester.SpSqlClient.Execute (SpExecInput input)
-Static method executes a sql stored procedure and provides a results model that may be compared to an expected results model.
+Static method executes a sql stored procedure and returns a results model that may be compared to an expected results model.
 
 
 ```C#
@@ -16,6 +16,8 @@ Static method executes a sql stored procedure and provides a results model that 
 <br/> Execute input model - contains all required information to run the stored procedure
 
 
+### SpExecInput
+* **CommandTImeout**
 
 
 ```
