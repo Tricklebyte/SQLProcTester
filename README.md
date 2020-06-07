@@ -6,7 +6,6 @@ Unit test SQL Stored Procedures without EntityFramework
 ## SQLProcTester.SpSqlClient.Execute (SpExecInput input)
 Static method executes a sql stored procedure and returns a results model that may be compared to an expected results model.
 
-
 ```C#
  public static SpExecResult Execute(SpExecInput input)
 ```
@@ -47,6 +46,6 @@ Static method executes a sql stored procedure and returns a results model that m
   ]
 }
 ```
-### Default Input Values
-DKKKDKDK
-<br/> sdfsdf
+## Default Input Values
+**All Input properties have corresponding Class Properties of SpSqlClient**
+<br/>**Values of the input model override the values of the Class Properties**
