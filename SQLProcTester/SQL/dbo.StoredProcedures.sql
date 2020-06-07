@@ -1,112 +1,146 @@
 USE [SqlProcTest]
 GO
 
-/****** Object: SqlProcedure [dbo].[spGetCurrentPositionById] Script Date: 5/27/2020 5:15:20 PM ******/
-SET ANSI_NULLS ON
-GO
 
-SET QUOTED_IDENTIFIER ON
-GO
-
-
--- Test procedure for parameter type int
-CREATE OR ALTER PROCEDURE [dbo].[spGetPositionHistoryById]
-	@Id int
-AS
-SELECT * FROM dbo.EmployeePositionHistory
-	WHERE id = @Id
-	ORDER BY LastName, FirstName, StartDate;
-	GO
-
---==========================================================
--- Test procedure for parameter types nvarchar 	
-CREATE OR ALTER PROCEDURE [dbo].[spGetCurrentPositionByName]
-
-	@LastName nvarchar(50),
-	@FirstName nvarchar(50)
-AS
-SELECT * FROM dbo.EmployeePositionHistory
-	WHERE LastName = @LastName and FirstName = @FirstName 
-	AND StartDate IS NOT NULL
-	and EndDate IS NULL
-	ORDER BY LastName, FirstName, StartDate;
-	GO
-
-
---===========================================================
--- Test procedure for parameter types nvarchar and datetime2	
-CREATE OR ALTER PROCEDURE [dbo].[spGetHistoryByNameAndDate]
-	@LastName nvarchar(50),
-	@FirstName nvarchar(50),
-	@StartDate datetime2(7),
-	@EndDate datetime2(7)
-AS
-
-SELECT * FROM dbo.EmployeePositionHistory
-	WHERE LastName = @LastName and FirstName = @FirstName 
-	AND StartDate >= @StartDate and EndDate <= @EndDate   
-	ORDER BY LastName, FirstName, StartDate;
-GO
-
-
---==========================================================
--- Test procedure for parameter type varchar 
-CREATE OR ALTER PROCEDURE [dbo].[spGetHistoryByPosition]
+/****** Object: SqlProcedure [dbo].[spGetByAll] Script Date: 6/7/2020 2:17:54 PM ******/
+CREATE  PROCEDURE [dbo].[spGetByAll]
+-- Test procedure for parameter types nvarchar and datetime2
+	@lastName nvarchar(50),
+	@firstName nvarchar(50),
+	@dateOfBirth datetime,
+	@isContractor bit,
+	@startDate datetime2(7),
 	@position varchar(50)
+
 AS
+
+SELECT * FROM dbo.EmployeePositionHistory
+	WHERE LastName = @lastName and FirstName = @firstName 
+	AND DateOfBirth = @dateOfBirth
+	AND IsContractor = @isContractor
+	AND StartDate >= @startDate
+	AND Position = @position
+	ORDER BY LastName, firstName, StartDate;
+
+Return 0
+GO
+
+--===============================================================
+/****** Object: SqlProcedure [dbo].[spGetById] Script Date: 6/7/2020 2:17:12 PM ******/
+CREATE  PROCEDURE [dbo].[spGetById]
+-- Test procedure for parameter type int
+	@id int
+AS
+
+
+SELECT * FROM dbo.EmployeePositionHistory
+	WHERE id = @id
+
+Return 0;
+
+GO;
+
+--===============================================================
+/****** Object: SqlProcedure [dbo].[spGetByNameAndDate] Script Date: 6/7/2020 2:15:29 PM ******/
+CREATE  PROCEDURE [dbo].[spGetByNameAndDate]
+-- Test procedure for parameter types nvarchar and datetime2
+	@lastName nvarchar(50),
+	@firstName nvarchar(50),
+	@startDate datetime2(7),
+	@endDate datetime2(7)
+
+AS
+
+SELECT * FROM dbo.EmployeePositionHistory
+	WHERE LastName = @lastName and FirstName = @firstName 
+	AND StartDate >= @startDate and EndDate <= @endDate   
+	ORDER BY LastName, FirstName, StartDate;
+
+	Return 0;
+GO
+
+--===============================================================
+/****** Object: SqlProcedure [dbo].[spGetByPosition] Script Date: 6/7/2020 2:16:03 PM ******/
+
+CREATE  PROCEDURE [dbo].[spGetByPosition]
+-- Test procedure for parameter type varchar 
+	@position varchar(50)
+
+AS
+
 SELECT * FROM dbo.EmployeePositionHistory
 	WHERE Position = @position
 	ORDER BY LastName, FirstName, StartDate;
-	GO;
 
---==========================================================
--- Test procedure for parameter types bit and datetime2	
-CREATE OR ALTER PROCEDURE [dbo].[spGetHistoryByTypeAndDate]
+	Return 0;
+GO
 
-	@IsContractor bit,
-	@StartDate datetime2(7),
-	@EndDate datetime2(7)
+USE [SqlProcTest]
+GO
+
+--=======================================================================
+/****** Object: SqlProcedure [dbo].[spGetByTypeAndDate] Script Date: 6/7/2020 2:19:52 PM ******/
+
+CREATE  PROCEDURE [dbo].[spGetByTypeAndDate]
+-- Test procedure for parameter types nvarchar and datetime2
+	@isContractor bit,
+	@startDate datetime2(7),
+	@endDate datetime2(7)
 
 AS
 
+
 SELECT * FROM dbo.EmployeePositionHistory
-	WHERE IsContractor = @IsContractor
-	AND StartDate >= @StartDate and EndDate <= @EndDate   
+	WHERE IsContractor = @isContractor
+	AND StartDate >= @startDate and EndDate <= @endDate   
 	ORDER BY LastName, FirstName, StartDate;
 
-	GO
+Return 0;
+GO;
 
+--=================================================================
+/****** Object: SqlProcedure [dbo].[spGetByTypeAndMinDateOfBirth] Script Date: 6/7/2020 2:20:40 PM ******/
 
---====================================================
--- Test procedure for parameter types bit and datetime	
-CREATE OR ALTER PROCEDURE [dbo].[spGetHistoryByTypeAndMinDOB]
-
-	@IsContractor bit,
-	@MinDOB datetime
+CREATE  PROCEDURE [dbo].[spGetByTypeAndMinDateOfBirth]
+-- Test procedure for parameter types bit and datetime
+	@isContractor bit,
+	@minDateOfBirth datetime
 AS
 
 select * from dbo.EmployeePositionHistory
-	where IsContractor = @IsContractor and DateOfBirth > @MinDOB 
+	where IsContractor = @isContractor and DateOfBirth >= @minDateOfBirth 
 	ORDER BY LastName, FirstName, StartDate;
 
-	GO
---=======================================================
+Return 0;
+GO;
 
-CREATE  PROCEDURE [dbo].[spGetHistoryByAll]
--- Test procedure for all supported parameter types
+--========================================================================
+/****** Object: SqlProcedure [dbo].[spGetCurrentByName] Script Date: 6/7/2020 2:21:12 PM ******/
+
+CREATE  PROCEDURE [dbo].[spGetCurrentByName]
+-- Test procedure for parameter types nvarchar and datetime2
 	@LastName nvarchar(50),
-	@FirstName nvarchar(50),
-	@DOB datetime,
-	@IsContractor bit,
-	@StartDate datetime2(7),
-	@Position varchar(50)
+	@FirstName nvarchar(50)
 
 AS
 
 SELECT * FROM dbo.EmployeePositionHistory
 	WHERE LastName = @LastName and FirstName = @FirstName 
-	AND DateOfBirth = @DOB
-	AND IsContractor = @IsContractor
-	AND StartDate >= @StartDate
-	AND Position = @Position
-	ORDER BY LastName, FirstName, StartDate;
+	AND StartDate IS NOT NULL
+	and EndDate IS NULL;
+
+Return 0;
+GO;
+
+ --===========================================================================
+/****** Object: SqlProcedure [dbo].[spWaitForSeconds] Script Date: 6/7/2020 2:22:17 PM ******/
+
+CREATE PROCEDURE [dbo].[spWaitForSeconds]
+	@seconds int
+AS
+DECLARE @delay DATETIME
+SELECT @delay = DATEADD(SECOND,@seconds, CONVERT(DATETIME,0))
+	
+	WAITFOR	DELAY @delay
+
+RETURN 0
