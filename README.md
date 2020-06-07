@@ -50,12 +50,12 @@ Static method executes a sql stored procedure and returns a results model that m
 <br/>This allows you to set an input (like Connection String) once for all tests and not have to repeat that value in all test cases.
 <br/> 
 
-## Return Model
+## Result Model
   **SQLProcTester.SpExecResult**
 <br/> Execute Result Model - Contains execution information and row results when applicable
 
-* **Duration (long)** - Description of the Duration field
-* **ReturnValue (int)** - 
-* **ResultText (string)** - 
-* **DBRows (List\<DbRow>)** - 
+* **Duration (long)** - Elapsed time of execution (milliseconds)
+* **ReturnValue (int)** - Will be the returnValue for query procedures, and the number of rows affected for non-query procedures.
+* **ResultText (string)** - Execution information written by SpSqlClient - usually error info.
+* **DBRows (List\<DbRow>)** - Each DBRow model represents one row of data returned from a procedure that queries data
 
