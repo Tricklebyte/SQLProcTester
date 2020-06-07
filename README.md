@@ -1,2 +1,4 @@
 # SQLProcTester
-Unit test SQL Stored Procedures without Entity Framework
+**Unit test SQL Stored Procedures without using Entity Framework**
+
+
