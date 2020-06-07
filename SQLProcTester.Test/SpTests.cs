@@ -42,8 +42,6 @@ namespace SQLProcTester.Test
         [InlineData("Query\\spGetByTypeAndMinDateOfBirth", "2")]
         public void ExecuteGood(string procedure, string testCase)
         {
-            
-
             //ARRANGE
             string basePath = "TestCases\\Execute\\Good";
             var input = JsonConvert.DeserializeObject<SpExecInput>(File.ReadAllText($"{basePath}\\{procedure}\\input{testCase}.json"));
@@ -72,7 +70,6 @@ namespace SQLProcTester.Test
         [InlineData("InputFail\\SpName", "1")] //  missing stored Procedure name
         [InlineData("InputFail\\ParameterType", "1")] //  Invalid Parameter Type
         [InlineData("InputFail\\ParameterValue", "1")] //  Invalid Parameter Value
-   
         public void ExecuteFail(string testPath, string testCase)
         {
             // ARRANGE
