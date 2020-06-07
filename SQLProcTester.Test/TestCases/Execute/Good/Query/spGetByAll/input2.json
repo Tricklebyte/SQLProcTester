@@ -1,0 +1,36 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spGetByAll",
+  "SqlParams": [
+    {
+      "Name": "lastName",
+      "Type": "Nvarchar",
+      "Value": "Blazier"
+    },
+    {
+      "Name": "firstName",
+      "Type": "Nvarchar",
+      "Value": "Blake"
+    },
+    {
+      "Name": "dateOfBirth",
+      "Type": "Datetime",
+      "Value": "1978-02-01"
+    },
+    {
+      "Name": "isContractor",
+      "Type": "Bit",
+      "Value": "0"
+    },
+    {
+      "Name": "startDate",
+      "Type": "Datetime2",
+      "Value": "2020-01-01"
+    },
+    {
+      "Name": "position",
+      "Type": "Varchar",
+      "Value": "Intergalactic Surfer"
+    }
+  ]
+}

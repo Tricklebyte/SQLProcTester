@@ -1,0 +1,17 @@
+// tests parameter types Bit and DateTime
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spGetByTypeAndMinDateofBirth",
+  "SqlParams": [
+    {
+      "Name": "isContractor",
+      "Type": "Bit",
+      "Value": 0
+    },
+    {
+      "Name": "minDateOfBirth",
+      "Type": "DateTime",
+      "Value": "1950-01-01 00:00:00"
+    }
+  ]
+}

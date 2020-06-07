@@ -18,71 +18,153 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TestCases\spGetCurrentByName\Good\expected1.json">
+    <None Update="TestCases\Execute\Fail\CommandTimeout\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetCurrentByName\Good\expected2.json">
+    <None Update="TestCases\Execute\Fail\CommandTimeout\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetCurrentByName\Good\input2.json">
+    <None Update="TestCases\Execute\Fail\CommandTimeout\input2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetCurrentByName\Good\input1.json">
+    <None Update="TestCases\Execute\Fail\CommandTimeout\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetCurrentByName\MaxLengthExceeded\input1.json">
+    <None Update="TestCases\Execute\Fail\ConnFail\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetCurrentByName\MissingParameter\input1.json">
+    <None Update="TestCases\Execute\Fail\ConnFail\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByAll\Good\expected1.json">
+    <None Update="TestCases\Execute\Fail\ConnFail\input2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByAll\Good\expected2.json">
+    <None Update="TestCases\Execute\Fail\ConnFail\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByAll\Good\input1.json">
+    <None Update="TestCases\Execute\Fail\InputFail\ConnString\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByAll\Good\input2.json">
+    <None Update="TestCases\Execute\Fail\InputFail\ConnString\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryById\Good\expected1.json">
+    <None Update="TestCases\Execute\Fail\InputFail\ParameterType\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryById\Good\expected2.json">
+    <None Update="TestCases\Execute\Fail\InputFail\ParameterType\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryById\Good\input1.json">
+    <None Update="TestCases\Execute\Fail\InputFail\ParameterValue\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryById\Good\input2.json">
+    <None Update="TestCases\Execute\Fail\InputFail\ParameterValue\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByNameAndDate\Good\expected1.json">
+    <None Update="TestCases\Execute\Fail\InputFail\SpName\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByNameAndDate\Good\expected2.json">
+    <None Update="TestCases\Execute\Fail\InputFail\SpName\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByNameAndDate\Good\input1.json">
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\spGetHistoryByNameAndDate\Good\input2.json">
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Fail\SqlError\MaxLengthExceeded\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Fail\SqlError\MissingParameter\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByAll\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByAll\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByAll\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByAll\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetById\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetById\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetById\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetById\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByPosition\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByPosition\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByPosition\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByPosition\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestCases\spGetCurrentByName\DurationExceeded\" />
-    <Folder Include="TestCases\spNonQueryDrop\" />
-    <Folder Include="TestCases\spNonQueryUpdate\" />
-    <Folder Include="TestCases\spNonQueryInsert\" />
-    <Folder Include="TestCases\spNonQueryDelete\" />
-    <Folder Include="TestCases\spCreate\" />
-    <Folder Include="TestCases\spGetHistoryByAll\InvalidParameterType\" />
-    <Folder Include="TestCases\spGetHistoryByAll\SQLError\" />
+    <Folder Include="TestCases\Execute\Fail\SqlError\ProcNotFound\" />
+    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryDrop\" />
+    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryUpdate\" />
+    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryInsert\" />
+    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryDelete\" />
+    <Folder Include="TestCases\Execute\Good\NonQuery\spCreate\" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,44 @@
+{
+  "Duration": 54,
+  "ReturnValue": 0,
+  "ResultText": null,
+  "RowsAffected": null,
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "Id",
+          "Value": "8"
+        },
+        {
+          "Key": "LastName",
+          "Value": "Barkley"
+        },
+        {
+          "Key": "FirstName",
+          "Value": "Bart"
+        },
+        {
+          "Key": "DateOfBirth",
+          "Value": "11/12/1980 12:00:00 AM"
+        },
+        {
+          "Key": "IsContractor",
+          "Value": "False"
+        },
+        {
+          "Key": "Position",
+          "Value": "Elected Buffoon"
+        },
+        {
+          "Key": "StartDate",
+          "Value": "2/3/2015 12:00:00 AM"
+        },
+        {
+          "Key": "EndDate",
+          "Value": "2/3/2018 12:00:00 AM"
+        }
+      ]
+    }
+  ]
+}

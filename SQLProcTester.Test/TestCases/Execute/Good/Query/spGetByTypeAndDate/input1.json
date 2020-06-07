@@ -1,0 +1,21 @@
+// tests parameter types Bit and DateTime2
+{
+   "SpName": "spGetByTypeAndDate",
+  "SqlParams": [
+    {
+      "Name": "isContractor",
+      "Type": "Bit",
+      "Value": 1
+    },
+    {
+      "Name": "startDate",
+      "Type": "DateTime2",
+      "Value": "2018-01-01 00:00:00"
+    },
+    {
+      "Name": "endDate",
+      "Type": "DateTime2",
+      "Value": "2020-09-01 00:00:00"
+    }
+  ]
+}

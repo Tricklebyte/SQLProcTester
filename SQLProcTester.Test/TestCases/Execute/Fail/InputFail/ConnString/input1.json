@@ -1,0 +1,11 @@
+{
+  "ConnectionString": "",
+  "SpName": "spGetById",
+  "SqlParams": [
+    {
+      "Name": "id",
+      "Type": "Int",
+      "Value": "2"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ namespace SQLProcTester
         private static bool runNonQuery;
 
 
-        
+
         // When Non-Query is true, the SqlDataCommand.ExecuteNonQuery method will be used instead of the SqlDataReader
         //                          and SpExecResult.RowsAffected will populated.
         public static bool NonQuery
@@ -89,26 +89,28 @@ namespace SQLProcTester
 
                     if (runNonQuery)
                     {
-                        result.RowsAffected = cmd.ExecuteNonQuery();
+                        result.ReturnValue = cmd.ExecuteNonQuery();
                     }
                     else
                     {
                         SqlDataReader rdr = cmd.ExecuteReader();
                         result.DbRows = rdr.GetDbRows();
-
                     }
 
                     // TODO CHECK IF RET PARAM EXISTS
                     // RETURN VALUE
                     result.ReturnValue = (int)cmd.Parameters["@ReturnValue"].Value;
                     // TODO CHECK IF CONNECTION AUTO-CLOSES
-                  //  con.Close();
+                    //  con.Close();
 
                 }
             }
             catch (Exception e)
             {
-                result.ResultText = $"Error: \n{e.Message} \n\nInner Exception:\n{e.InnerException}";
+                string errMsg = DebugLogger.CreateErrorDetail("SqlSpClient.Execute", e.Message, e.InnerException?.Message);
+
+                DebugLogger.LogError(errMsg);
+                result.ResultText = errMsg;
             }
             //Add duration
             if (stopWatch != null)
@@ -116,14 +118,12 @@ namespace SQLProcTester
                 stopWatch.Stop();
                 result.Duration = (stopWatch.ElapsedMilliseconds);
             }
-            //           Capture json output if needed to create test case "expected" records.
-                    //Alternately, you could return just the json string and perform Asserts using JSON
-                    //but you wouldn't get the detailed error logging from the IsEquivalent methods
-             string jsonString = JsonConvert.SerializeObject(result, Formatting.Indented);
-                 // Save jsonString to expectedxxx.json
-                   // Save JsonString to database test case expected results
+
+            //Capture json output if needed to create test case "expected" records.
+            string jsonString = JsonConvert.SerializeObject(result, Formatting.Indented);
+
             return result;
-        //    return jsonString;
+
         }
 
         private static void AddSqlParameters(this SqlCommand cmd, IEnumerable<SqlParamInput> paramsIn)
@@ -134,32 +134,40 @@ namespace SQLProcTester
                 string name = input.Name.Replace("@", "");
                 name = "@" + input.Name;
                 SqlParameter sqlParam = new SqlParameter(name, null);
-                switch (type)
+                try
                 {
-                    case "DATETIME":
-                    case "DATETIME2":
-                        //convert value from String to DT find in emma unit tests, or config core inline date string theory
-                        sqlParam.SqlDbType = SqlDbType.DateTime;
-                        sqlParam.Value = Convert.ToDateTime(input.Value);
-                        break;
-                    case "NVARCHAR":
-                        sqlParam = new SqlParameter(name, System.Data.SqlDbType.NVarChar)
-                        { Value = input.Value.ToString() };
-                        break;
-                    case "VARCHAR":
-                        sqlParam = new SqlParameter(name, System.Data.SqlDbType.VarChar)
-                        { Value = input.Value.ToString() };
-                        break;
-                    case "INT":
-                        sqlParam = new SqlParameter(name, System.Data.SqlDbType.Int)
-                        { Value = Convert.ToInt32(input.Value) };
-                        break;
-                    case "BIT":
-                        sqlParam = new SqlParameter(name, System.Data.SqlDbType.Bit)
-                        { Value = Convert.ToInt32(input.Value) };
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException("SqlParameter.Type", $"Invalid type specified for parameter: {name}");
+                    switch (type)
+                    {
+                        case "DATETIME":
+                        case "DATETIME2":
+                            //convert value from String to DT find in emma unit tests, or config core inline date string theory
+                            sqlParam.SqlDbType = SqlDbType.DateTime;
+                            sqlParam.Value = Convert.ToDateTime(input.Value);
+                            break;
+                        case "NVARCHAR":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.NVarChar)
+                            { Value = input.Value.ToString() };
+                            break;
+                        case "VARCHAR":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.VarChar)
+                            { Value = input.Value.ToString() };
+                            break;
+                        case "INT":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Int)
+                            { Value = Convert.ToInt32(input.Value) };
+                            break;
+                        case "BIT":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Bit)
+                            { Value = Convert.ToInt32(input.Value) };
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException("SqlParameter.Type", $"Invalid type specified for parameter: {name}");
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    throw new Exception($"Parameter Exception - '{name}' : {e.Message}");
                 }
                 cmd.Parameters.Add(sqlParam);
             }
@@ -201,6 +209,7 @@ namespace SQLProcTester
 
         }
 
+
         // Populates result rows (called from Execute when NonQuery is false)
         private static List<DbRow> GetDbRows(this SqlDataReader rdr)
         {
@@ -221,38 +230,6 @@ namespace SQLProcTester
             rdr.Close();
             return dbRows;
         }
-
-        // List<DbRow> Comparator
-        public static bool IsListEquivalent(this List<DbRow> actualList, List<DbRow> expectedList)
-        {
-            bool retVal;
-            // check if counts are equal - 
-            bool chkVal = actualList.Count() == expectedList.Count();
-
-
-            if (!chkVal)
-            {
-                Debug.WriteLine($"DbRow count not equal. Actual count: {actualList.Count()}, Expected: {expectedList.Count()}");
-                retVal = false;
-            }
-            else
-            {
-                retVal = true;
-
-                for (int i = 0; i < expectedList.Count(); i++)
-                {
-                    if (!actualList[i].IsEquivalent(expectedList[i]))
-                    { 
-                        Debug.WriteLine($"Actual DbRow at index '{i.ToString()}' not equivalent to Expected");
-                    retVal = false;
-                    }
-                }
-            }
-            return retVal;
-
-        }
-
-
 
     }
 }

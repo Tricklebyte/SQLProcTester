@@ -1,0 +1,44 @@
+{
+  "Duration": 18835,
+  "ReturnValue": 0,
+  "ResultText": null,
+  "RowsAffected": null,
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "Id",
+          "Value": "36"
+        },
+        {
+          "Key": "LastName",
+          "Value": "Blazier"
+        },
+        {
+          "Key": "FirstName",
+          "Value": "Blake"
+        },
+        {
+          "Key": "DateOfBirth",
+          "Value": "2/1/1978 12:00:00 AM"
+        },
+        {
+          "Key": "IsContractor",
+          "Value": "False"
+        },
+        {
+          "Key": "Position",
+          "Value": "Intergalactic Surfer"
+        },
+        {
+          "Key": "StartDate",
+          "Value": "1/1/2020 12:00:00 AM"
+        },
+        {
+          "Key": "EndDate",
+          "Value": ""
+        }
+      ]
+    }
+  ]
+}

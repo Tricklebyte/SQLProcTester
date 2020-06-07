@@ -1,0 +1,16 @@
+// tests parameter types Bit and DateTime
+{
+  "SpName": "spGetByTypeAndMinDateofBirth",
+  "SqlParams": [
+    {
+      "Name": "isContractor",
+      "Type": "Bit",
+      "Value": 1
+    },
+    {
+      "Name": "minDateOfBirth",
+      "Type": "DateTime",
+      "Value": "1970-01-01 00:00:00"
+    }
+  ]
+}

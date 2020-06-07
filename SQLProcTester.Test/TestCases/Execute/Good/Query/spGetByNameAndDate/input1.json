@@ -1,0 +1,25 @@
+{
+  "SpName": "spGetByNameAndDate",
+  "SqlParams": [
+    {
+      "Name": "lastName",
+      "Type": "NvarChar",
+      "Value": "Barker"
+    },
+    {
+      "Name": "firstName",
+      "Type": "NvarChar",
+      "Value": "Bob"
+    },
+    {
+      "Name": "startDate",
+      "Type": "DateTime2",
+      "Value": "2018-01-01 00:00:00"
+    },
+    {
+      "Name": "endDate",
+      "Type": "DateTime2",
+      "Value": "2018-09-01 00:00:00"
+    }
+  ]
+}

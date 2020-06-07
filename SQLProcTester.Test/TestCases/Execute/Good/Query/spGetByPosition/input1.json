@@ -1,0 +1,10 @@
+{
+"SpName": "spGetByPosition",
+  "SqlParams": [
+    {
+      "Name": "position",
+      "Type": "varchar",
+      "Value": "Origami Ninja"
+    }
+  ]
+}

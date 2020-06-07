@@ -1,0 +1,6 @@
+{
+  "Duration": 0,
+  "ReturnValue": null,
+  "ResultText": "ERROR! Object: SqlSpClient.Execute | Message: Set the Connection String Property of the class or include the value in the test input. (Parameter 'ConnectionString')\n ",
+  "DbRows": null
+}
