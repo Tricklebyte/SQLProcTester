@@ -24,7 +24,7 @@ Static method executes a sql stored procedure and returns a results model that m
 * **NonQuery** (bool) 
    * When true, no row results will be returned from the database and the number of records affected will be written to SpExecResult.ReturnValue.
    * When false, row results will be written to SpExecResult.DbRows and the ReturnValue of the stored procedure will be written to SpExecResult.ReturnValue.
-```
+
 ```json
 {
   "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
