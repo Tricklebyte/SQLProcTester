@@ -65,7 +65,6 @@ Static method executes a sql stored procedure and returns a results model that m
   "Duration": 6500000,
   "ReturnValue": 0,
   "ResultText": null,
-  "RowsAffected": null,
   "DbRows": [
     {
       "DbFields": [
