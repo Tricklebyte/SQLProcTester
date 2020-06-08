@@ -1,7 +1,6 @@
 # SQLProcTester
 * Unit test SQL Stored Procedures 
-* Test stored procedures in your existing database
-* No need to configure EntityFramework
+* Test stored procedures in your existing database without using EntityFramework
 * Faster to set up and easier to use than Microsoft SQL Server Data Tools
 
 ## SQLProcTester.SpSqlClient.Execute (SpExecInput input)
