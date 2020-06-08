@@ -1,6 +1,7 @@
 # SQLProcTester
-Unit test SQL Stored Procedures without EntityFramework
-* Test the stored procedures in your existing database
+* Unit test SQL Stored Procedures 
+* Test stored procedures in your existing database
+* No need to configure EntityFramework
 * Faster to set up and easier to use than Microsoft SQL Server Data Tools
 
 ## SQLProcTester.SpSqlClient.Execute (SpExecInput input)
@@ -59,3 +60,49 @@ Static method executes a sql stored procedure and returns a results model that m
 * **ResultText (string)** - Execution information written by SpSqlClient - usually error info.
 * **DBRows (List\<DbRow>)** - Each DBRow model represents one row of data returned from a procedure that queries data
 
+```json
+{
+  "Duration": 6500000,
+  "ReturnValue": 0,
+  "ResultText": null,
+  "RowsAffected": null,
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "Id",
+          "Value": "2"
+        },
+        {
+          "Key": "LastName",
+          "Value": "Barker"
+        },
+        {
+          "Key": "FirstName",
+          "Value": "Bob"
+        },
+        {
+          "Key": "DateOfBirth",
+          "Value": "1/2/1968 12:00:00 AM"
+        },
+        {
+          "Key": "IsContractor",
+          "Value": "True"
+        },
+        {
+          "Key": "Position",
+          "Value": "Space Travel Agent"
+        },
+        {
+          "Key": "StartDate",
+          "Value": "7/25/2018 12:00:00 AM"
+        },
+        {
+          "Key": "EndDate",
+          "Value": "3/5/2019 12:00:00 AM"
+        }
+      ]
+    }
+  ]
+}
+```
