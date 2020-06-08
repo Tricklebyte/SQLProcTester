@@ -33,12 +33,12 @@ Static method executes a sql stored procedure and returns a results model that m
     {
       "Name": "LastName",
       "Type": "NvarChar",
-      "Value": "Bobbin"
+      "Value": "Barker"
     },
     {
       "Name": "FirstName",
       "Type": "NvarChar",
-      "Value": "Babaduk"
+      "Value": "Bob"
     }
   ]
 }
