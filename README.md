@@ -60,7 +60,6 @@ Static method executes a sql stored procedure and returns a results model that m
 * **ResultText (string)** - Execution information written by SpSqlClient - usually error info.
 * **DBRows (List\<DbRow>)** - Each DBRow model represents one row of data returned from a procedure that queries data
 
-### Example SpExecResult 
 
 ```json
 {
