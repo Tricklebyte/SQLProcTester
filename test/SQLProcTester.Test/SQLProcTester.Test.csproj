@@ -14,10 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SQLProcTester\SQLProcTester.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="TestCases\Execute\Fail\CommandTimeout\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -165,6 +161,11 @@
     <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryInsert\" />
     <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryDelete\" />
     <Folder Include="TestCases\Execute\Good\NonQuery\spCreate\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SQLProcTester\SQLProcTester.csproj" />
+    <ProjectReference Include="..\..\src\SQLProcTester.csproj" />
   </ItemGroup>
 
 </Project>

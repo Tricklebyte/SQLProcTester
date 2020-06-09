@@ -24,28 +24,32 @@ namespace SQLProcTester.Test
         }
 
         // The good tests are for different parameter data types  (nvarchar, varchar, bit, int, datetime)
+        //  Test Case 1 is a simple example with minimum input values specified in the test case
+        //  Test Case 2 uses all settings in the input
         [Theory]
-        //TODO Add cases for null cmdto and nonQuery as well as 0
-        [InlineData("Query\\spGetCurrentByName", "1")] //Parameter Type nvarchar
-        [InlineData("Query\\spGetCurrentByName", "2")]
-        [InlineData("Query\\spGetByAll", "1")]  //Parameter Types: nvarchar, varchar, bit, int, datetime, datetime2 
-        [InlineData("Query\\spGetByAll", "2")]
+        [InlineData("Query\\spGetCurrentByName", "1")] // Param Types:nvarchar 
+        [InlineData("Query\\spGetCurrentByName", "2")] // Param Types:nvarchar 
+        [InlineData("Query\\spGetByAll", "1")]  //Param Types: nvarchar, varchar, bit, int, datetime, datetime2  
+        [InlineData("Query\\spGetByAll", "2")]  
         [InlineData("Query\\spGetById", "1")]  //Parameter Type int
-        [InlineData("Query\\spGetById", "2")]
-        [InlineData("Query\\spGetByNameAndDate", "1")]  //Parameter Types: nvarchar, varchar, bit, int, datetime, datetime2 
+        [InlineData("Query\\spGetById", "2")]  
+        [InlineData("Query\\spGetByNameAndDate", "1")]  //Parameter Types: nvarchar, datetime2 
         [InlineData("Query\\spGetByNameAndDate", "2")]
         [InlineData("Query\\spGetByPosition", "1")]  //Parameter Types: varchar
         [InlineData("Query\\spGetByPosition", "2")]
-        [InlineData("Query\\spGetByTypeAndDate", "1")]  //Parameter Types: nvarchar, varchar, bit, int, datetime, datetime2 
+        [InlineData("Query\\spGetByTypeAndDate", "1")]  //Parameter Types:  bit,  datetime2 
         [InlineData("Query\\spGetByTypeAndDate", "2")]
-        [InlineData("Query\\spGetByTypeAndMinDateOfBirth", "1")]  //Parameter Types: nvarchar, varchar, bit, int, datetime, datetime2 
+        [InlineData("Query\\spGetByTypeAndMinDateOfBirth", "1")]  //Parameter Types:  bit, datetime
         [InlineData("Query\\spGetByTypeAndMinDateOfBirth", "2")]
         public void ExecuteGood(string procedure, string testCase)
         {
             //ARRANGE
             string basePath = "TestCases\\Execute\\Good";
+            
+            // Create the input model
             var input = JsonConvert.DeserializeObject<SpExecInput>(File.ReadAllText($"{basePath}\\{procedure}\\input{testCase}.json"));
-
+           
+            // Create the expected model
             var expected = JsonConvert.DeserializeObject<SpExecResult>(File.ReadAllText($"{basePath}\\{procedure}\\expected{testCase}.json"));
 
             ////ACT
@@ -90,7 +94,7 @@ namespace SQLProcTester.Test
             ////ACT
             SpExecResult actual = SqlSpClient.Execute(input);
 
-            // restore class level settings for subsequent tests in this same run
+            // restore class level settings for subsequent tests in this same run. Do this before Assert in case an error is thrown during Assert.
             SqlSpClient.ConnectionString = savedConn;
             SqlSpClient.SpName = savedSPName;
 
