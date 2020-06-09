@@ -108,3 +108,17 @@ Static method executes a sql stored procedure and returns a results model that m
 ## Example Unit Test
 The example is an XUnit Test project created in Visual Studio 2019
 
+### Connection String
+The connection string for the SqlSpClient may be set at the Class level, or supplied with each test input.
+Here in our example we are going to set it at the Class Level using the test class Constructor. Then we won't need to repeat it in the test input model.
+```c#
+public SpTests()
+        {
+            // Same connection string for all tests, overidden from input model
+            SqlSpClient.ConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true";
+        }
+
+
+```
+
+
