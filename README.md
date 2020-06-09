@@ -105,3 +105,6 @@ Static method executes a sql stored procedure and returns a results model that m
   ]
 }
 ```
+## Example Unit Test
+The example is an XUnit Test project created in Visual Studio 2019
+
