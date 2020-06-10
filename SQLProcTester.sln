@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{B0B66BF2-27B
 		samples\SQL\SQLProcTester-Sample.sql = samples\SQL\SQLProcTester-Sample.sql
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLProcTester.Test", "test\SQLProcTester.Test\SQLProcTester.Test.csproj", "{F64B3CC0-18E0-4218-AF35-70A3C9816EB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLProcTester", "src\SQLProcTester.csproj", "{F675171C-C20A-4BC7-BF2C-DF8EF7FEA56C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLProcTester", "src\SQLProcTester.csproj", "{E67F9848-E3BF-4880-BF54-34E25350B4C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SQLProcTester.Test", "test\SQLProcTester.Test.csproj", "{B1D65E18-6238-41B6-84C3-D3C2130AB70D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,22 +24,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F64B3CC0-18E0-4218-AF35-70A3C9816EB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F64B3CC0-18E0-4218-AF35-70A3C9816EB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F64B3CC0-18E0-4218-AF35-70A3C9816EB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F64B3CC0-18E0-4218-AF35-70A3C9816EB9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E67F9848-E3BF-4880-BF54-34E25350B4C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E67F9848-E3BF-4880-BF54-34E25350B4C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E67F9848-E3BF-4880-BF54-34E25350B4C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E67F9848-E3BF-4880-BF54-34E25350B4C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F675171C-C20A-4BC7-BF2C-DF8EF7FEA56C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F675171C-C20A-4BC7-BF2C-DF8EF7FEA56C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F675171C-C20A-4BC7-BF2C-DF8EF7FEA56C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F675171C-C20A-4BC7-BF2C-DF8EF7FEA56C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1D65E18-6238-41B6-84C3-D3C2130AB70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1D65E18-6238-41B6-84C3-D3C2130AB70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1D65E18-6238-41B6-84C3-D3C2130AB70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1D65E18-6238-41B6-84C3-D3C2130AB70D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B0B66BF2-27B3-4CB9-9E35-D673ABEBA76D} = {A40EAE5A-4142-4319-B654-7B574C4B8821}
-		{F64B3CC0-18E0-4218-AF35-70A3C9816EB9} = {0246FF27-4E2A-4461-8169-B86B415AAC97}
-		{E67F9848-E3BF-4880-BF54-34E25350B4C1} = {813C5C29-13FF-4154-8EC1-CF637BF8B324}
+		{F675171C-C20A-4BC7-BF2C-DF8EF7FEA56C} = {813C5C29-13FF-4154-8EC1-CF637BF8B324}
+		{B1D65E18-6238-41B6-84C3-D3C2130AB70D} = {0246FF27-4E2A-4461-8169-B86B415AAC97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D7026AB9-277D-429F-B3A5-26B6B10A5AAA}

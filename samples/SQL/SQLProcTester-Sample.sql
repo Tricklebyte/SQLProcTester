@@ -1,3 +1,11 @@
+-- SqlProcTester Demo and Testing Setup Script
+-- Creates and populates EmployeePositionHistoryTable
+-- Creates Stored Procedures for Testing 
+--
+--
+--
+
+
 USE [SqlProcTest]
 GO
 
@@ -10,6 +18,8 @@ GO
 DROP TABLE IF EXISTS dbo.EmployeePositionHistory
 GO
 
+-- The table has all the column types that are supported as parameters by SqlSpClient.
+-- NOTE - The table design is not normalized and is only meant to provide simple, convenient data for the stored procedures.
 CREATE TABLE [dbo].[EmployeePositionHistory](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[LastName] [nvarchar](50) NULL,
@@ -223,7 +233,9 @@ GO;
 
  --===========================================================================
 /****** Object: SqlProcedure [dbo].[spWaitForSeconds] Script Date: 6/7/2020 2:22:17 PM ******/
-
+-- This procedure is used to test the CommandTimeout functionality.
+--   This procedure will wait the number of seconds supplied by the @seconds parameter and then return 0.
+--   To simulate a Command Timout failure condition, call this procedure with parameter @seconds greater than the CommandTimeout of the client.
 CREATE PROCEDURE [dbo].[spWaitForSeconds]
 	@seconds int
 AS
