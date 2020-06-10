@@ -108,13 +108,17 @@ Static method executes a sql stored procedure and returns a results model that m
 ## Example Unit Test
 The example is an XUnit Test project created in Visual Studio 2019
 
-## Setup Demo Database
+### Setup Demo Database
 Example table, data, and stored procedures are provided in SQL Script [SQLProcTester-Sample.sql](https://github.com/Tricklebyte/SQLProcTester/blob/master/samples/SQL/SQLProcTester-Sample.sql) in the samples\SQL folder.
 <br/> Run this script on an existing SQL Server database to set up the sample stored procedures for the example
 
-### Connection String
-The connection string (and all other inputs) for the SqlSpClient may be set at the Class level, or supplied with each test input.
-Here in our example we are going to set the connection string at the Class Level using the test class Constructor. Then we won't need to repeat it in the test input model for every test. 
+### Set Common Input Properties
+Static class SqlSpClient has static properties for each field of the input model.
+This enables you to set test input properties globally at the class level without including the value in every test input.
+When specified in both places, the input file takes precedence.
+
+#### Connection String
+Here in our example we are going to set the connection string at the Class Level in the Constructor of the test class. Then we won't need to repeat it in the test input model for every test. 
 ```c#
 public SpTests()
         {
@@ -124,7 +128,11 @@ public SpTests()
 ```
 
 ### Create the Input Model for the first test
-The input model for this test will contain the other input fields besides ConnectionString which has already been set in the Constructor.
+The input model contains the data required to execute the stored procedure (except for the ConnectionString which has already been globally set in the Constructor).
+<br/> The example test uses a Json file to create the input model. 
+<br/> It supplies input values for the stored procedure name and parameters.
+<br/>  The json below will execute a stored procedure named **spGetById**
+<br/>  The stored procedure will be passed a single parameter of type **int** with the name **id** and the value **1** 
 
 ```c#
     SpExecInput input = new SpExecInput
@@ -132,10 +140,29 @@ The input model for this test will contain the other input fields besides Connec
          SpName = "spGetById",
          SqlParams = new List<SqlParamInput>
          {
-             new SqlParamInput{Name="Id",Type="Int",Value="1"}
+             new SqlParamInput{
+                  Name="Id",
+                  Type="Int",
+                  Value="1"
+             }
          }
-      };
+     };
+     
+```
+```json
+{
+ "SpName": "spGetById",
+  "SqlParams": [
+    {
+      "Name": "id",
+      "Type": "Int",
+      "Value": "2"
+    }
+  ]
+}
 ```
 
+
+```
 
 
