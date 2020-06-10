@@ -109,12 +109,12 @@ Static method executes a sql stored procedure and returns a results model that m
 The example is an XUnit Test project created in Visual Studio 2019
 
 ## Setup Demo Database
-Demo table, data, and stored procedures are provided in SQL Script [SQLProcTester-Sample.sql](https://github.com/Tricklebyte/SQLProcTester/blob/master/samples/SQL/SQLProcTester-Sample.sql) in the directory
-<br/> Run this script on an existing SQL Server database to set up the testing components
+Example table, data, and stored procedures are provided in SQL Script [SQLProcTester-Sample.sql](https://github.com/Tricklebyte/SQLProcTester/blob/master/samples/SQL/SQLProcTester-Sample.sql) in the samples\SQL folder.
+<br/> Run this script on an existing SQL Server database to set up the sample stored procedures for the example
 
 ### Connection String
-The connection string for the SqlSpClient may be set at the Class level, or supplied with each test input.
-Here in our example we are going to set it at the Class Level using the test class Constructor. Then we won't need to repeat it in the test input model for every test.
+The connection string (and all other inputs) for the SqlSpClient may be set at the Class level, or supplied with each test input.
+Here in our example we are going to set the connection string at the Class Level using the test class Constructor. Then we won't need to repeat it in the test input model for every test. 
 ```c#
 public SpTests()
         {
@@ -123,6 +123,20 @@ public SpTests()
         }
 ```
 
-### Create the Input Model
+### Create the Input Model for the first test
+The input model for this test will contain the other input fields besides ConnectionString which has already been set in the Constructor.
+
+```c#
+    SpExecInput input = new SpExecInput
+     {
+         SpName = "spGetById",
+         SqlParams = new List<SqlParamInput>
+         {
+             new SqlParamInput{Name="Id",Type="Int",Value="1"}
+         }
+      };
+
+### 
+
 
 
