@@ -109,7 +109,7 @@ Static method executes a sql stored procedure and returns a results model that m
 The example is an XUnit Test project created in Visual Studio 2019
 
 ## Setup Demo Database
-Demo table, data, and stored procedures are provided in SQL Script [SQLProcTester-Sample.sql] (https://github.com/Tricklebyte/SQLProcTester/blob/master/samples/SQL/SQLProcTester-Sample.sql)
+Demo table, data, and stored procedures are provided in SQL Script [SQLProcTester-Sample.sql](https://github.com/Tricklebyte/SQLProcTester/blob/master/samples/SQL/SQLProcTester-Sample.sql) in the directory
 <br/> Run this script on an existing SQL Server database to set up the testing components
 
 ### Connection String
@@ -124,5 +124,6 @@ public SpTests()
 
 
 ```
+
 
 
