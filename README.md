@@ -109,7 +109,8 @@ Static method executes a sql stored procedure and returns a results model that m
 The example is an XUnit Test project created in Visual Studio 2019
 
 ## Setup Demo Database
-Demo table, data, and stored procedures are provided in SQL Script 
+Demo table, data, and stored procedures are provided in SQL Script [SQLProcTester-Sample.sql] (https://github.com/Tricklebyte/SQLProcTester/blob/master/samples/SQL/SQLProcTester-Sample.sql)
+<br/> Run this script on an existing SQL Server database to set up the testing components
 
 ### Connection String
 The connection string for the SqlSpClient may be set at the Class level, or supplied with each test input.
