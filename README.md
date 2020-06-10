@@ -128,7 +128,7 @@ public SpTests()
 ```
 
 ### Create the Input Model for the first test
-The input model contains the data required to execute the stored procedure (except for the ConnectionString which has already been globally set in the Constructor).
+**The input model contains the data required to execute the stored procedure (except for the ConnectionString which has already been globally set in the Constructor).**
 <br/> The example test uses a Json file to create the input model. 
 <br/> It supplies input values for the stored procedure name and parameters.
 <br/>  The json below will execute a stored procedure named **spGetById**
