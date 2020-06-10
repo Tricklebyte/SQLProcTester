@@ -141,7 +141,7 @@ The input model contains the data required to execute the stored procedure (exce
     {
       "Name": "id",
       "Type": "Int",
-      "Value": "2"
+      "Value": "1"
     }
   ]
 }
