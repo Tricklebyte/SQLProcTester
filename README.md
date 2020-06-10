@@ -134,25 +134,10 @@ The input model contains the data required to execute the stored procedure (exce
 <br/>  The json below will execute a stored procedure named **spGetById**
 <br/>  The stored procedure will be passed a single parameter of type **int** with the name **id** and the value **1** 
 
-```c#
-    SpExecInput input = new SpExecInput
-     {
-         SpName = "spGetById",
-         SqlParams = new List<SqlParamInput>
-         {
-             new SqlParamInput{
-                  Name="Id",
-                  Type="Int",
-                  Value="1"
-             }
-         }
-     };
-     
-```
 ```json
 {
  "SpName": "spGetById",
-  "SqlParams": [
+ "SqlParams": [
     {
       "Name": "id",
       "Type": "Int",
@@ -162,7 +147,5 @@ The input model contains the data required to execute the stored procedure (exce
 }
 ```
 
-
-```
 
 
