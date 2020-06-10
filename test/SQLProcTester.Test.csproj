@@ -164,8 +164,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SQLProcTester\SQLProcTester.csproj" />
-    <ProjectReference Include="..\..\src\SQLProcTester.csproj" />
+    <ProjectReference Include="..\src\SQLProcTester.csproj" />
   </ItemGroup>
 
 </Project>
