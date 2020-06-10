@@ -132,7 +132,7 @@ public SpTests()
 <br/> The example test uses a Json file to create the input model. 
 <br/> It supplies input values for the stored procedure name and parameters.
 <br/>  The json below will execute a stored procedure named **spGetById**
-<br/>  The stored procedure will be passed a single parameter of type **int** with the name **id** and the value **1** 
+<br/>  The Stored Procedure will be executed with a single parameter of type **int**, with the name **id**, and the value **1** 
 
 ```json
 {
