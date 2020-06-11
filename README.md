@@ -38,8 +38,8 @@ Static method executes a sql stored procedure and returns a results model that m
 * **DBRows : List\<DbRow>** - Each DBRow model represents one row of data returned from a procedure that queries data
 <Br/> Execution Result Model Comparator Method 
 * **IsEquivalent(SpExecResult) : bool** - - Performs deep compare for easy test assertions.  
-**NOTES:
-* 
+**NOTES:** 
+   * dlknld 
 
 
 ## Example Unit Test
