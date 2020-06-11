@@ -31,12 +31,13 @@ Static method executes a sql stored procedure and returns a results model that m
 
 ## Result Model
   **SQLProcTester.SpExecResult**
-<br/> Execute Result Model - Contains execution information and row results when applicable
-
+<br/> Execution Result Model Prperties - Contains execution information and row results when applicable
 * **Duration (long)** - Elapsed time of execution (milliseconds)
 * **ReturnValue (int)** - Will be the returnValue for query procedures, and the number of rows affected for non-query procedures.
 * **ResultText (string)** - Execution information written by SpSqlClient including error info.
 * **DBRows (List\<DbRow>)** - Each DBRow model represents one row of data returned from a procedure that queries data
+<Br/> Execution Result Model Comparator Method
+* **IsEquivalent(SpExecResult) : bool
 
 
 ## Example Unit Test
@@ -130,7 +131,8 @@ public SpTests()
   ]
 }
 ```
-### Call the SpSqlClient.Execute method (ACT)
+### Complete Test Method
+
 ```c#
  [InlineData("Query\\spGetById", "1")]
         public void ExecuteGood(string testPath, string testCase)
