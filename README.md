@@ -60,51 +60,6 @@ Static method executes a sql stored procedure and returns a results model that m
 * **DBRows (List\<DbRow>)** - Each DBRow model represents one row of data returned from a procedure that queries data
 
 
-```json
-{
-  "Duration": 5000,
-  "ReturnValue": 0,
-  "ResultText": null,
-  "DbRows": [
-    {
-      "DbFields": [
-        {
-          "Key": "Id",
-          "Value": "2"
-        },
-        {
-          "Key": "LastName",
-          "Value": "Barker"
-        },
-        {
-          "Key": "FirstName",
-          "Value": "Bob"
-        },
-        {
-          "Key": "DateOfBirth",
-          "Value": "1/2/1968 12:00:00 AM"
-        },
-        {
-          "Key": "IsContractor",
-          "Value": "True"
-        },
-        {
-          "Key": "Position",
-          "Value": "Space Travel Agent"
-        },
-        {
-          "Key": "StartDate",
-          "Value": "7/25/2018 12:00:00 AM"
-        },
-        {
-          "Key": "EndDate",
-          "Value": "3/5/2019 12:00:00 AM"
-        }
-      ]
-    }
-  ]
-}
-```
 ## Example Unit Test
 The example is an XUnit Test project created in Visual Studio 2019
 
@@ -161,7 +116,7 @@ public SpTests()
       "DbFields": [
         {
           "Key": "Id",
-          "Value": "2"
+          "Value": "1"
         },
         {
           "Key": "LastName",
