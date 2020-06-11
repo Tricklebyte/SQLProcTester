@@ -129,7 +129,7 @@ public SpTests()
 
 ### Create the Input Model for the first test
 **The input model contains the data required to execute the stored procedure (except for the ConnectionString which has already been globally set in the Constructor).**
-<br/> The example test uses a Json file to create the input model. 
+<br/> The example test uses a Json file to create the **SpExecInput** input model. 
 <br/> It supplies input values for the stored procedure name and parameters.
 <br/>  The json below will execute a stored procedure named **spGetById**
 <br/>  The Stored Procedure will be executed with a single parameter of type **int**, with the name **id**, and the value **1** 
@@ -147,5 +147,52 @@ public SpTests()
 }
 ```
 
-
-
+### Create the Expected Model for the first test
+**The expected model will mimic the actual result of the SpSqlClient.Execute Method.**
+<br/> The example test uses a Json file to create the expected **SpExecResult** model
+```json
+<br/> {
+  "Duration": 6500000,
+  "ReturnValue": 0,
+  "ResultText": null,
+  "RowsAffected": null,
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "Id",
+          "Value": "2"
+        },
+        {
+          "Key": "LastName",
+          "Value": "Barker"
+        },
+        {
+          "Key": "FirstName",
+          "Value": "Bob"
+        },
+        {
+          "Key": "DateOfBirth",
+          "Value": "1/2/1968 12:00:00 AM"
+        },
+        {
+          "Key": "IsContractor",
+          "Value": "True"
+        },
+        {
+          "Key": "Position",
+          "Value": "Space Travel Agent"
+        },
+        {
+          "Key": "StartDate",
+          "Value": "7/25/2018 12:00:00 AM"
+        },
+        {
+          "Key": "EndDate",
+          "Value": "3/5/2019 12:00:00 AM"
+        }
+      ]
+    }
+  ]
+}
+```
