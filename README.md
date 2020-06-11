@@ -62,7 +62,7 @@ Static method executes a sql stored procedure and returns a results model that m
 
 ```json
 {
-  "Duration": 6500000,
+  "Duration": 5000,
   "ReturnValue": 0,
   "ResultText": null,
   "DbRows": [
@@ -127,7 +127,7 @@ public SpTests()
         }
 ```
 
-### Create the Input Model for the first test
+### Create the Input Model for the first test (ARRANGE)
 **The input model contains the data required to execute the stored procedure (except for the ConnectionString which has already been globally set in the Constructor).**
 <br/> The example test uses a Json file to create the **SpExecInput** input model. 
 <br/> It supplies input values for the stored procedure name and parameters.
@@ -147,7 +147,7 @@ public SpTests()
 }
 ```
 
-### Create the Expected Model for the first test
+### Create the Expected Model for the first test (ARRANGE)
 **The expected model will mimic the actual result of the SpSqlClient.Execute Method.**
 <br/> The example test uses a Json file to create the expected **SpExecResult** model
 ```json
@@ -196,3 +196,4 @@ public SpTests()
   ]
 }
 ```
+### Call the SpSqlClient.Execute method (ACT)
