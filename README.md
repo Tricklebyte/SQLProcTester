@@ -132,22 +132,21 @@ public SpTests()
 ```
 ### Call the SpSqlClient.Execute method (ACT)
 ```c#
- [InlineData("Query\\spGetByTypeAndMinDateOfBirth", "2")]
-        public void ExecuteGood(string procedure, string testCase)
+ [InlineData("Query\\spGetById", "1")]
+        public void ExecuteGood(string testPath, string testCase)
         {
             //ARRANGE
-            string basePath = "TestCases\\Execute\\Good";
-            
-            // Create the input model
+              // Create the input model
             var input = JsonConvert.DeserializeObject<SpExecInput>(File.ReadAllText($"{basePath}\\{procedure}\\input{testCase}.json"));
            
-            // Create the expected model
+              // Create the expected model
             var expected = JsonConvert.DeserializeObject<SpExecResult>(File.ReadAllText($"{basePath}\\{procedure}\\expected{testCase}.json"));
 
-            ////ACT
+            //ACT
+            // execute the test method
             SpExecResult actual = SqlSpClient.Execute(input);
 
-            ////ASSERT
+            //ASSERT
             /// SpExecOutput.IsEquivalent method performs deep compare and generates detailed error messages to ResultText property and the Debug Log
             /// NOTE!!!  
             /// Comparison for SpExecResult.Duration passes when expected Duration is greater than 0 and actual.Duration IS LESS THAN OR EQUAL TO expected.Duration
