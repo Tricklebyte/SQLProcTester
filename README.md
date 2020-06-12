@@ -141,7 +141,7 @@ public SpTests()
         {
             //ARRANGE
               // Create the input model
-            var input = JsonConvert.DeserializeObject<SpExecInput>(File.ReadAllText($"{basePath}\\{procedure}\\input{testCase}.json"));
+            var input = JsonConvert.DeserializeObject<SpExecInput>(File.ReadAllText($"{testPath}\\input{testCase}.json"));
            
               // Create the expected model
             var expected = JsonConvert.DeserializeObject<SpExecResult>(File.ReadAllText($"{basePath}\\{procedure}\\expected{testCase}.json"));
