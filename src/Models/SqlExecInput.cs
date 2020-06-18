@@ -5,12 +5,10 @@ using System.Text;
 
 namespace SQLProcTester.Models
 {
-    public class SpExecInput
+    public class SqlExecInput
     {
         public string ConnectionString { get; set; }
-        public string SpName { get; set; }
-        public int? CommandTimeout { get; set; }
-        public  List<SqlParamInput> SqlParams { get; set; }
-
+        public string SqlText { get; set; }
+        
     }
 }

@@ -17,7 +17,7 @@ namespace SQLProcTester.Models
 
         public List<DbRow> DbRows { get; set; }
 
-        public bool IsEquivalent(SpExecResult expected)
+        public  bool IsEquivalent(SpExecResult expected)
         {
             bool retVal;
             // RETURN VALUE
@@ -42,14 +42,13 @@ namespace SQLProcTester.Models
                 DebugLogger.LogError($"EQUIVALENCY CHECK FAIL: 'SpExecResut.Duration' Expected Duration is greater than zero and Actual Duration({this.Duration}) exceeded Expected Duration({expected.Duration}). Set expected.Duration to 0 to disable this check.");
             }
 
-
-
             // If the actual has rows, then compare to expected
+            // 
             if (this.DbRows != null)
             {
                 if (expected.DbRows != null)
                 {
-                    if (!IsListEquivalent(expected.DbRows))
+                    if (!this.DbRows.IsListEquivalent(expected.DbRows))
                     {
                         retVal = false;
                     }
@@ -66,36 +65,7 @@ namespace SQLProcTester.Models
 
         }
 
-        // List<DbRow> Comparator
-        private bool IsListEquivalent(List<DbRow> expectedList)
-        {
-
-            bool retVal;
-            // check if counts are equal - 
-            bool chkVal = this.DbRows.Count == expectedList.Count;
-
-            if (!chkVal)
-            {
-                DebugLogger.LogEquivalencyError($"EQUIVALENCY CHECK FAIL: 'SpExecResult.DbRows.Count' ", DbRows.Count.ToString(), expectedList.Count.ToString());
-                retVal = false;
-            }
-            else
-            {
-                retVal = true;
-
-                for (int i = 0; i < expectedList.Count; i++)
-                {
-                    if (!DbRows[i].IsEquivalent(expectedList[i]))
-                    {
-                        DebugLogger.LogError($"EQUIVALENCY CHECK FAIL: 'SpExecResult.DbRows' Actual DbRow at index '{i.ToString()}' not equivalent to Expected");
-                        retVal = false;
-                    }
-                }
-            }
-            return retVal;
-
-        }
-
+       
 
     }
 

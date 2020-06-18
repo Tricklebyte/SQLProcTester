@@ -14,7 +14,7 @@ namespace SQLProcTester
             {
                 errMsg += $"Inner Exception: {innerException}";
             }
-            return errMsg;
+           return errMsg;
         }
         
         public static void LogError(string error)

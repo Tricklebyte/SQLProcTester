@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp5.0</TargetFramework>
@@ -8,159 +8,254 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="160.2004021.0" />
     <PackageReference Include="xunit" Version="2.4.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="TestCases\Execute\Fail\CommandTimeout\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\CommandTimeout\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\CommandTimeout\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\CommandTimeout\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\CommandTimeout\input2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\CommandTimeout\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\CommandTimeout\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\CommandTimeout\input2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\ConnFail\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\ConnFail\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\ConnFail\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\ConnFail\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\ConnFail\input2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\ConnFail\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\ConnFail\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\ConnFail\input2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\ConnString\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\CommandTimeout\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\ConnString\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\CommandTimeout\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\ParameterType\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\CommandTimeout\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\ParameterType\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\CommandTimeout\input2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\ParameterValue\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\ConnString\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\ParameterValue\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\ConnString\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\SpName\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\ParameterType\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\InputFail\SpName\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\ParameterType\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\ParameterValue\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\ParameterValue\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\SpName\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndMinDateofBirth\input2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\InputFail\SpName\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\SqlError\MaxLengthExceeded\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\input2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Fail\SqlError\MissingParameter\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Good\spCreate\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Good\spCreate\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\input2.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Good\spDeleteById\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetCurrentByName\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Good\spDeleteById\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\SqlError\MaxLengthExceeded\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Good\spInsert\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Fail\SqlError\MissingParameter\input1.json">
+    <None Update="TestCases\SpRunner\RunProcNonQuery\Good\spInsert\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByAll\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\CommandTimeout\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByAll\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\CommandTimeout\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByAll\input1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\CommandTimeout\input2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByAll\input2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\CommandTimeout\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetById\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\ConnFail\expected2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetById\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\ConnFail\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetById\input1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\ConnFail\input2.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetById\input2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\ConnFail\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\ConnString\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\ConnString\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\input1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\ParameterType\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByNameAndDate\input2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\ParameterType\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByPosition\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\ParameterValue\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByPosition\expected2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\ParameterValue\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByPosition\input1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\SpName\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByPosition\input2.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\InputFail\SpName\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\expected1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndMinDateofBirth\expected1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="TestCases\Execute\Good\Query\spGetByTypeAndDate\input1.json">
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndMinDateofBirth\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndMinDateofBirth\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndMinDateofBirth\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndDate\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndDate\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetCurrentByName\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetCurrentByName\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetCurrentByName\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetCurrentByName\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\SqlError\MaxLengthExceeded\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Fail\SqlError\MissingParameter\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByAll\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByAll\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByAll\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByAll\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetById\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetById\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetById\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetById\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByNameAndDate\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByNameAndDate\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByNameAndDate\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByNameAndDate\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByPosition\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByPosition\expected2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByPosition\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByPosition\input2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndDate\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SpRunner\RunProcQuery\Good\spGetByTypeAndDate\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SqlSpClient\ExecSqlQuery\Fail\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SqlSpClient\ExecSqlQuery\Fail\input1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SqlSpClient\ExecSqlQuery\Good\expected1.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestCases\SqlSpClient\ExecSqlQuery\Good\input1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="TestCases\Execute\Fail\SqlError\ProcNotFound\" />
-    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryDrop\" />
-    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryUpdate\" />
-    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryInsert\" />
-    <Folder Include="TestCases\Execute\Good\NonQuery\spNonQueryDelete\" />
-    <Folder Include="TestCases\Execute\Good\NonQuery\spCreate\" />
+    <Folder Include="TestCases\SpRunner\RunProcNonQuery\Fail\SqlError\ProcNotFound\" />
+    <Folder Include="TestCases\SpRunner\RunProcQuery\Fail\InputFail\CommandTimeout\" />
+    <Folder Include="TestCases\SpRunner\RunProcQuery\Fail\SqlError\ProcNotFound\" />
+    <Folder Include="TestCases\SqlSpClient\ExecSqlQuery\Fail\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>

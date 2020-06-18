@@ -1,0 +1,12 @@
+//SpRunner.RunProcNonQuery - INPUT FAIL - ConnectionString null
+{
+  "ConnectionString": null,
+  "SpName": "spCreate",
+  "SqlParams": [
+    {
+      "Name": "id",
+      "Type": "Int",
+      "Value": "2"
+    }
+  ]
+}

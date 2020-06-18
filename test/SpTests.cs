@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using SQLProcTester.Models;
 using System.IO;
 using Xunit.Sdk;
+using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace SQLProcTester.Test
 {/// <summary>
@@ -20,31 +22,32 @@ namespace SQLProcTester.Test
         public SpTests()
         {
             // Same connection string for all tests, overidden from input model
-            SqlSpClient.ConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true";
+            SpRunner.ConnectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true";
         }
 
         // The good tests are for different parameter data types  (nvarchar, varchar, bit, int, datetime)
         //  Test Case 1 is a simple example with minimum input values specified in the test case
         //  Test Case 2 uses all settings in the input
         [Theory]
-        [InlineData("Query\\spGetCurrentByName", "1")] // Param Types:nvarchar 
-        [InlineData("Query\\spGetCurrentByName", "2")] // Param Types:nvarchar 
-        [InlineData("Query\\spGetByAll", "1")]  //Param Types: nvarchar, varchar, bit, int, datetime, datetime2  
-        [InlineData("Query\\spGetByAll", "2")]  
-        [InlineData("Query\\spGetById", "1")]  //Parameter Type int
-        [InlineData("Query\\spGetById", "2")]  
-        [InlineData("Query\\spGetByNameAndDate", "1")]  //Parameter Types: nvarchar, datetime2 
-        [InlineData("Query\\spGetByNameAndDate", "2")]
-        [InlineData("Query\\spGetByPosition", "1")]  //Parameter Types: varchar
-        [InlineData("Query\\spGetByPosition", "2")]
-        [InlineData("Query\\spGetByTypeAndDate", "1")]  //Parameter Types:  bit,  datetime2 
-        [InlineData("Query\\spGetByTypeAndDate", "2")]
-        [InlineData("Query\\spGetByTypeAndMinDateOfBirth", "1")]  //Parameter Types:  bit, datetime
-        [InlineData("Query\\spGetByTypeAndMinDateOfBirth", "2")]
-        public void ExecuteGood(string procedure, string testCase)
+        [InlineData("spGetCurrentByName", "1")] // Param Types:nvarchar 
+        [InlineData("spGetCurrentByName", "2")] // Param Types:nvarchar 
+        [InlineData("spGetByAll", "1")]  //Param Types: nvarchar, varchar, bit, int, datetime, datetime2  
+        [InlineData("spGetByAll", "2")]  
+        [InlineData("spGetById", "1")]  //Parameter Type int
+        [InlineData("spGetById", "2")]  
+        [InlineData("spGetByNameAndDate", "1")]  //Parameter Types: nvarchar, datetime2 
+        [InlineData("spGetByNameAndDate", "2")]
+        [InlineData("spGetByPosition", "1")]  //Parameter Types: varchar
+        [InlineData("spGetByPosition", "2")]
+        [InlineData("spGetByTypeAndDate", "1")]  //Parameter Types:  bit,  datetime2 
+        [InlineData("spGetByTypeAndDate", "2")]
+        [InlineData("spGetByTypeAndMinDateOfBirth", "1")]  //Parameter Types:  bit, datetime
+        [InlineData("spGetByTypeAndMinDateOfBirth", "2")]
+     //ToDo move to non query   [InlineData("NonQuery\\spInsert","1")]
+        public void SpTestRunner_RunProcQueryGood(string procedure, string testCase)
         {
             //ARRANGE
-            string basePath = "TestCases\\Execute\\Good";
+            string basePath = "TestCases\\ExecProcQuery\\Good";
             
             // Create the input model
             var input = JsonConvert.DeserializeObject<SpExecInput>(File.ReadAllText($"{basePath}\\{procedure}\\input{testCase}.json"));
@@ -53,17 +56,16 @@ namespace SQLProcTester.Test
             var expected = JsonConvert.DeserializeObject<SpExecResult>(File.ReadAllText($"{basePath}\\{procedure}\\expected{testCase}.json"));
 
             ////ACT
-            SpExecResult actual = SqlSpClient.Execute(input);
+            SpExecResult actual = SpRunner.RunProcQuery(input);
 
             ////ASSERT
-            /// SpExecOutput.IsEquivalent method performs deep compare and generates detailed error messages to ResultText property and the Debug Log
+            /// SpExecOutput.IsEquivalent method performs deep compare and generates detailed error messages to ResultText property and the Console Log
             /// NOTE!!!  
             /// Comparison for SpExecResult.Duration passes when expected Duration is greater than 0 and actual.Duration IS LESS THAN OR EQUAL TO expected.Duration
             /// To disable this check set expected.Duration to 0
             /// 
             Assert.True(actual.IsEquivalent(expected));
         }
-
 
         [Theory]
         [InlineData("ConnFail", "1")] // Connection Fail = Bad Sql Instance Name
@@ -74,17 +76,17 @@ namespace SQLProcTester.Test
         [InlineData("InputFail\\SpName", "1")] //  missing stored Procedure name
         [InlineData("InputFail\\ParameterType", "1")] //  Invalid Parameter Type
         [InlineData("InputFail\\ParameterValue", "1")] //  Invalid Parameter Value
-        public void ExecuteFail(string testPath, string testCase)
+        public void SpTestRunner_RunProcQueryFail(string testPath, string testCase)
         {
             // ARRANGE
-            string basePath = "TestCases\\Execute\\Fail";
+            string basePath = "TestCases\\ExecProcQuery\\Fail";
             // Save the Connection String and Stored Procedure name in case they are set at the class level
-            string savedConn = SqlSpClient.ConnectionString;
-            string savedSPName = SqlSpClient.SpName;
+            string savedConn = SpRunner.ConnectionString;
+            string savedSPName = SpRunner.SpName;
 
             // Temporarily clear the connection string and spName from the class property so the input files can simulate missing values
-            SqlSpClient.ConnectionString = "";
-            SqlSpClient.SpName = "";
+            SpRunner.ConnectionString = "";
+            SpRunner.SpName = "";
 
 
             // Prepare input and expected
@@ -92,15 +94,88 @@ namespace SQLProcTester.Test
             var expected = JsonConvert.DeserializeObject<SpExecResult>(File.ReadAllText($"{basePath}\\{testPath}\\expected{testCase}.json"));
 
             ////ACT
-            SpExecResult actual = SqlSpClient.Execute(input);
+            SpExecResult actual = SpRunner.RunProcQuery(input);
 
             // restore class level settings for subsequent tests in this same run. Do this before Assert in case an error is thrown during Assert.
-            SqlSpClient.ConnectionString = savedConn;
-            SqlSpClient.SpName = savedSPName;
+            SpRunner.ConnectionString = savedConn;
+            SpRunner.SpName = savedSPName;
 
             // ASSERT
             Assert.True(actual.ResultText == expected.ResultText);
 
+        }
+
+
+        [Theory]
+        [InlineData("spCreate", "1")]
+        [InlineData("spInsert", "1")]
+        [InlineData("spDeleteById", "1")]
+        public void SpTestRunner_RunProcNonQueryGood(string testPath, string testCase)
+        {
+            //ARRANGE
+            string basePath = "TestCases\\ExecProcNonQuery\\Good";
+
+            // Create the input model
+            var input = JsonConvert.DeserializeObject<SpExecInputNonQuery>(File.ReadAllText($"{basePath}\\{testPath}\\input{testCase}.json"));
+
+
+            // Create the expected model
+            var expected = JsonConvert.DeserializeObject<SpExecResultNonQuery>(File.ReadAllText($"{basePath}\\{testPath}\\expected{testCase}.json"));
+
+
+            ////ACT
+            SpExecResultNonQuery actual = SpRunner.RunProcNonQuery(input);
+            //TODO Add json trap
+
+            ////ASSERT
+            /// SpExecOutput.IsEquivalent method performs deep compare and generates detailed error messages to ResultText property and the Console Log
+            /// NOTE!!!  
+            /// Comparison for SpExecResult.Duration passes when expected Duration is greater than 0 and actual.Duration IS LESS THAN OR EQUAL TO expected.Duration
+            /// To disable this check set expected.Duration to 0
+            /// 
+            Assert.True(actual.IsEquivalent(expected));
+        }
+
+        //TODO ExecProcNonQueryFail
+
+
+
+
+
+        [Theory]
+        [InlineData("Good", "1")]
+        [InlineData("Fail", "1")]   //Incorrect table name
+        public void ExecSqlQuery(string testPath, string testCase)
+        {
+            SqlExecResult actual;
+            //ARRANGE
+            string basePath = "TestCases\\ExecSqlQuery";
+
+            // Create the input model
+            var input = JsonConvert.DeserializeObject<SqlExecInput>(File.ReadAllText($"{basePath}\\{testPath}\\input{testCase}.json"));
+
+            // Create the expected model
+            var expected = JsonConvert.DeserializeObject<SqlExecResult>(File.ReadAllText($"{basePath}\\{testPath}\\expected{testCase}.json"));
+
+            using (SqlConnection con = new SqlConnection(input.ConnectionString))
+            {
+                if (con.State != ConnectionState.Open)
+                    con.Open();
+
+                SqlTransaction transaction;
+
+                ////ACT
+                transaction = con.BeginTransaction("PostInspectQueryTransaction");
+                 actual = SpSqlClient.ExecSqlQuery(transaction, input.SqlText);
+            }
+
+            ////ASSERT
+            /// SpExecOutput.IsEquivalent method performs deep compare and generates detailed error messages to ResultText property and the Console Log
+            /// NOTE!!!  
+            /// Comparison for SpExecResult.Duration passes when expected Duration is greater than 0 and actual.Duration IS LESS THAN OR EQUAL TO expected.Duration
+            /// To disable this check set expected.Duration to 0
+            /// 
+            Assert.True(actual.IsEquivalent(expected));
         }
 
 

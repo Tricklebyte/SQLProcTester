@@ -1,0 +1,10 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spInsert",
+  "SqlParams": [
+  ],
+
+  "PostInspectSQL": "select * from dbo.EmployeePositionHistory",
+  "Rollback": true
+
+}

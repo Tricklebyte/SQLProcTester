@@ -1,0 +1,14 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spDeleteById",
+  "SqlParams": [
+    {
+      "Name": "id",
+
+      "Type": "int",
+      "Value": 1
+    }
+  ],
+  "PostInspectSql": "SELECT * FROM dbo.EmployeePositionHistory",
+  "Rollback": true
+}

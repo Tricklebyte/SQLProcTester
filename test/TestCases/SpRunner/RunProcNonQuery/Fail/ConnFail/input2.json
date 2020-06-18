@@ -1,0 +1,12 @@
+// SpRunner.RunProcNonQuery - CONNECTION FAIL - Incorrect Database Name - INPUT
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTestX;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spGetById",
+  "SqlParams": [
+    {
+      "Name": "id",
+      "Type": "Int",
+      "Value": "2"
+    }
+  ]
+}

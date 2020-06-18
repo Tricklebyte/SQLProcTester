@@ -1,0 +1,13 @@
+//SpRunner.RunProcNonQuery - INPUT FAIL - COMMAND TIMEOUT - INVALID VALUE
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDBX;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spWaitForSeconds",
+  "CommandTimout": "$",
+  "SqlParams": [
+    {
+      "Name": "seconds",
+      "Type": "Int",
+      "Value": "2"
+    }
+  ]
+}
