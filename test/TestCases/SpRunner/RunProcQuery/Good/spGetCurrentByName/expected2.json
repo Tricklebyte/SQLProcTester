@@ -1,8 +1,7 @@
 {
-  "Duration": 33718,
-  "ReturnValue": 1,
-  "ResultText": null,
-  "RowsAffected": null,
+  "Duration": 5000,
+  "ReturnValue": 0,
+  "ResultText": "Success",
   "DbRows": [
     {
       "DbFields": [
@@ -16,7 +15,11 @@
         },
         {
           "Key": "FirstName",
-          "Value": "Babaduk"
+          "Value": "Babaduk                                           "
+        },
+        {
+          "Key": "MiddleInitial",
+          "Value": "B"
         },
         {
           "Key": "DateOfBirth",

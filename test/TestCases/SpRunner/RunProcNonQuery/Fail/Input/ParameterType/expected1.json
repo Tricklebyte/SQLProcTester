@@ -1,0 +1,7 @@
+{
+  "PostInspectResultText": null,
+  "Duration": 0,
+  "ReturnValue": null,
+  "ResultText": "ERROR! Object: SqlSpClient.ExecuteNonQuery | Message: Parameter Exception - '@id' : Invalid type specified for parameter: @id (Parameter 'SqlParameter.Type')",
+  "DbRows": null
+}

@@ -9,8 +9,13 @@
     },
     {
       "Name": "firstName",
-      "Type": "NvarChar",
+      "Type": "NChar",
       "Value": "Blanche"
+    },
+    {
+      "Name": "middleInitial",
+      "Type": "Char",
+      "Value": "B"
     },
     {
       "Name": "startDate",

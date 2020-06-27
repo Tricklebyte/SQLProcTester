@@ -11,8 +11,13 @@
     },
     {
       "Name": "FirstName",
-      "Type": "NvarChar",
+      "Type": "NChar",
       "Value": "Babaduk"
+    },
+    {
+      "Name": "middleInitial",
+      "Type": "Char",
+      "Value": "B"
     }
   ]
 }

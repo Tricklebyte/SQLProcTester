@@ -1,0 +1,16 @@
+{
+  "PostInspectResultText": "Success",
+  "Duration": 8763,
+  "ReturnValue": -1,
+  "ResultText": "Success",
+  "DbRows": [
+    {
+      "DbFields": [
+        {
+          "Key": "TABLE_NAME",
+          "Value": "EmployeePositionHistory2"
+        }
+      ]
+    }
+  ]
+}

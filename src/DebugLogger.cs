@@ -9,10 +9,10 @@ namespace SQLProcTester
     {
         public static string CreateErrorDetail(string objectName, string exception, string innerException = null)
         {
-            string errMsg = $"ERROR! Object: {objectName} | Message: {exception}\n ";
+            string errMsg = $"ERROR! Object: {objectName} | Message: {exception}";
             if (innerException != null)
             {
-                errMsg += $"Inner Exception: {innerException}";
+                errMsg += $"\nInner Exception: {innerException}";
             }
            return errMsg;
         }

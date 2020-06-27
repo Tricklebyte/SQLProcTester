@@ -57,17 +57,15 @@ namespace SQLProcTester
                     // TODO CHECK IF RET PARAM EXISTS
                     // RETURN VALUE
                     result.ReturnValue = (int)cmd.Parameters["@ReturnValue"].Value;
-                    // TODO CHECK IF CONNECTION AUTO-CLOSES
-                    //  con.Close();
 
+                    result.ResultText = "Success";
                 }
             }
             catch (Exception e)
             {
                 string errMsg = DebugLogger.CreateErrorDetail("SqlSpClient.Execute", e.Message, e.InnerException?.Message);
-
-                DebugLogger.LogError(errMsg);
                 result.ResultText = errMsg;
+                DebugLogger.LogError(errMsg);
             }
 
             //Add duration
@@ -91,45 +89,34 @@ namespace SQLProcTester
             SqlTransaction transaction;
             SqlExecResult postTestResult;
 
-            cmd.CommandText = input.SpName;
-            //initialize the command to execute the proc
-
-
             //Declare the reader to gather the post run results
             SqlDataReader rdr;
-
-
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-            cmd.CommandTimeout = input.CommandTimeout ?? 0;
-
+            
 
             //Start run timer to record elapsed time
             stopWatch.Start();
             try
             {
-
                 result.ReturnValue = cmd.ExecuteNonQuery();
                 //TODO add check for return value??
                 stopWatch.Stop();
                 result.ResultText = "Success";
-
+                
+            
+            
+            
+            
             }
-
             catch (Exception e)
             {
                 string errMsg = DebugLogger.CreateErrorDetail("SqlSpClient.Execute", e.Message, e.InnerException?.Message);
-
                 DebugLogger.LogError(errMsg);
                 result.ResultText = errMsg;
-
             }
-
-
 
             //Add duration
             if (stopWatch != null)
             {
-
                 result.Duration = (stopWatch.ElapsedMilliseconds);
             }
 
@@ -141,36 +128,21 @@ namespace SQLProcTester
         }
 
 
-        public static SqlExecResult ExecSqlQuery(SqlTransaction transaction, string sqlText)
+        // TODO can change to just Command, the transaction can be accessed through the command for rollback, or just use the command without the transaction for commit
+        public static SqlExecResult ExecSqlQuery(SqlCommand cmd, string sqlText)
         {
             string errMsg;
             SqlExecResult result = new SqlExecResult();
-
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = sqlText;
             try
             {
-                // set local variables to prepare
-                // PrepRun(input);
-                // use local variables to execute proc
-
-                SqlCommand cmd = new SqlCommand(sqlText, transaction.Connection);
-                cmd.CommandType = System.Data.CommandType.Text;
-                cmd.Transaction = transaction;
-
-                //Open the connection
-                // con.Open();
-
                 SqlDataReader rdr = cmd.ExecuteReader();
                 result.DbRows = rdr.GetDbRows();
-
-                // TODO CHECK IF CONNECTION AUTO-CLOSES
-                //  con.Close();
-
-
             }
             catch (Exception e)
             {
                 errMsg = DebugLogger.CreateErrorDetail("SqlSpClient.Execute", e.Message, e.InnerException?.Message);
-
                 DebugLogger.LogError(errMsg);
                 result.ErrorMessage = errMsg;
             }
@@ -183,62 +155,6 @@ namespace SQLProcTester
 
         }
 
-
-        private static void AddSqlParameters(this SqlCommand cmd, IEnumerable<SqlParamInput> paramsIn)
-        {
-            if (paramsIn == null)
-            {
-                paramsIn = new List<SqlParamInput>();
-            }
-
-            foreach (var input in paramsIn)
-            {
-                string type = input.Type.ToUpper();
-                string name = input.Name.Replace("@", "");
-                name = "@" + input.Name;
-                SqlParameter sqlParam = new SqlParameter(name, null);
-                try
-                {
-                    switch (type)
-                    {
-                        case "DATETIME":
-                        case "DATETIME2":
-                            sqlParam.SqlDbType = SqlDbType.DateTime;
-                            sqlParam.Value = Convert.ToDateTime(input.Value);
-                            break;
-                        case "NVARCHAR":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.NVarChar)
-                            { Value = input.Value.ToString() };
-                            break;
-                        case "VARCHAR":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.VarChar)
-                            { Value = input.Value.ToString() };
-                            break;
-                        case "INT":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Int)
-                            { Value = Convert.ToInt32(input.Value) };
-                            break;
-                        case "BIT":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Bit)
-                            { Value = Convert.ToInt32(input.Value) };
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException("SqlParameter.Type", $"Invalid type specified for parameter: {name}");
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    throw new Exception($"Parameter Exception - '{name}' : {e.Message}");
-                }
-                cmd.Parameters.Add(sqlParam);
-            }
-            // Add the ReturnValue Parameter last
-            var param = new SqlParameter("@ReturnValue", System.Data.SqlDbType.Int);
-            param.Direction = ParameterDirection.ReturnValue;
-            cmd.Parameters.Add(param);
-
-        }
 
 
         // Populates result rows (called from Execute when NonQuery is false)

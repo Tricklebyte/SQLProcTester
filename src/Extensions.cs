@@ -1,6 +1,8 @@
-﻿using SQLProcTester.Models;
+﻿using Microsoft.Data.SqlClient;
+using SQLProcTester.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,8 +64,72 @@ namespace SQLProcTester
         }
 
 
+        public static void AddSqlParameters(this SqlCommand cmd, IEnumerable<SqlParamInput> paramsIn)
+        {
+            if (paramsIn == null)
+            {
+                paramsIn = new List<SqlParamInput>();
+            }
+
+            foreach (var input in paramsIn)
+            {
+                string type = input.Type.ToUpper();
+                string name = input.Name.Replace("@", "");
+                name = "@" + input.Name;
+                SqlParameter sqlParam = new SqlParameter(name, null);
+                try
+                {
+                    switch (type)
+                    {
+                        case "DATETIME":
+                        case "DATETIME2":
+                            sqlParam.SqlDbType = SqlDbType.DateTime;
+                            sqlParam.Value = Convert.ToDateTime(input.Value);
+                            break;
+                        case "NCHAR":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.NChar)
+                            { Value = input.Value.ToString() };
+                            break;
+                        case "CHAR":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Char)
+                            { Value = input.Value.ToString() };
+                            break;
+                        case "NVARCHAR":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.NVarChar)
+                            { Value = input.Value.ToString() };
+                            break;
+                        case "VARCHAR":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.VarChar)
+                            { Value = input.Value.ToString() };
+                            break;
+                        case "INT":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Int)
+                            { Value = Convert.ToInt32(input.Value) };
+                            break;
+                        case "BIT":
+                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Bit)
+                            { Value = Convert.ToInt32(input.Value) };
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException("SqlParameter.Type", $"Invalid type specified for parameter: {name}");
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    throw new Exception($"Parameter Exception - '{name}' : {e.Message}");
+                }
+                cmd.Parameters.Add(sqlParam);
+            }
+            // Add the ReturnValue Parameter last
+            var param = new SqlParameter("@ReturnValue", System.Data.SqlDbType.Int);
+            param.Direction = ParameterDirection.ReturnValue;
+            cmd.Parameters.Add(param);
+
+        }
 
 
+        
     }
 
 

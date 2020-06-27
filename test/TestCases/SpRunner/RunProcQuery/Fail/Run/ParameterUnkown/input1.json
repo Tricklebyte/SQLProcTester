@@ -1,0 +1,16 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spGetById",
+  "SqlParams": [
+    {
+      "Name": "id",
+      "Type": "INT",
+      "Value": "2"
+    },
+    {
+      "Name": "firstName",
+      "Type": "NChar",
+      "Value": "Bob"
+    }
+  ]
+}

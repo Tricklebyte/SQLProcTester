@@ -18,7 +18,6 @@ namespace SQLProcTester.Models
             DbRows = new List<DbRow>();
         }
 
-
         public bool IsEquivalent(SqlExecResult expected)
         {
             bool retVal;
@@ -54,9 +53,7 @@ namespace SQLProcTester.Models
                     retVal = false;
             }
             return retVal;
-
         }
+   
     }
-
-
 }

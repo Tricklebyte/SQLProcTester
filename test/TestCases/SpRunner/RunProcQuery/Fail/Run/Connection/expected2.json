@@ -1,0 +1,6 @@
+{
+  "Duration": 0,
+  "ReturnValue": null,
+  "ResultText": "ERROR! Object: SqlSpClient.Execute | Message: Cannot open database \"SqlProcTestX\" requested by the login. The login failed.\r\nLogin failed for user 'frank-PC\\frank'.",
+  "DbRows": null
+}

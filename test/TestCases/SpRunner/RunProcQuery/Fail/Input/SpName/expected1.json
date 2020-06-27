@@ -1,0 +1,6 @@
+{
+  "Duration": 0,
+  "ReturnValue": null,
+  "ResultText": "ERROR! Object: SqlSpClient.Execute | Message: Set the SpName Property of the class or include the value in the test input. (Parameter 'SpName')",
+  "DbRows": null
+}

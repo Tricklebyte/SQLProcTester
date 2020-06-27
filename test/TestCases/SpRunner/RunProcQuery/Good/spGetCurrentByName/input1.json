@@ -8,8 +8,13 @@
     },
     {
       "Name": "firstName",
-      "Type": "NvarChar",
+      "Type": "NChar",
       "Value": "Bob"
+    },
+    {
+      "Name": "middleInitial",
+      "Type": "Char",
+      "Value": "B"
     }
   ]
 }

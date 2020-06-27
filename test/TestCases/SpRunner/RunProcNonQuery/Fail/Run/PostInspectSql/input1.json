@@ -1,0 +1,8 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spCreate",
+  "SqlParams": [
+  ],
+  "PostInspectSQL": "SELECX TABLE_NAME FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'dbo' AND TABLE_NAME = 'EmployeePositionHistory2'",
+  "Rollback": "true"
+}

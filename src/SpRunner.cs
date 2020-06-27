@@ -6,6 +6,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using System.Diagnostics;
 using System.Text;
+using System.Transactions;
 
 namespace SQLProcTester
 {
@@ -73,6 +74,7 @@ namespace SQLProcTester
                 PrepRun(input);
                 // use local variables to execute proc
                 result = SpSqlClient.ExecProcQuery(input);
+
             }
             catch (Exception e)
             {
@@ -99,117 +101,76 @@ namespace SQLProcTester
             try
             {
                 PrepRun(input);
-
-                using (SqlConnection con = new SqlConnection(input.ConnectionString))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    //TODO 
-                    con.Open();
-                    SqlCommand cmdProc = con.CreateCommand();
-
-                    SqlTransaction transaction;
-
-                    // Start a local transaction
-                    transaction = con.BeginTransaction("SQLProcTesterTransaction");
-
-                    // Assign command properties;
-                    cmdProc.CommandType = CommandType.StoredProcedure;
-                    cmdProc.Connection = con;
-                    cmdProc.Transaction = transaction;
-                    cmdProc.CommandTimeout = input.CommandTimeout ?? 0;
-
-
-                    // The list of simple SqlParamInput models is set from the class Property or input model.
-                    // The PrepRun method only assigns the sqlParamInput objects to the list.
-                    // We still need to call the AddSqlParameters extension method
-                    // If parameters are present, the SqlDataCommand.AddSqlParameters extension method will convert them to real Sql parameters and add them to the SqlDataCommand.
-                    if (input.SqlParams != null && input.SqlParams.Count > 0)
-                        cmdProc.AddSqlParameters(input.SqlParams);
-
-                    // Run Stored Proc to fill base Result Object
-                    // This is the main call to the Stored Procedure under test
-                    stopWatch.Start();
-                    actualResult = SpSqlClient.ExecProcNonQuery(cmdProc, input);
-
-
-                    // Check base results for error before continuing
-                    if (!(actualResult.ResultText=="Success"))
+                    using (SqlConnection con = new SqlConnection(input.ConnectionString))
                     {
-                        throw new Exception($"SpExecNonQueryResultText: {actualResult.ResultText}");
-                    }
+                        //TODO 
+                        con.Open();
+                        SqlCommand cmdProc = con.CreateCommand();
 
-                    // If a post-inspect script is specified, run it - save error messages to the PostInspectResultText field
-                    if (!String.IsNullOrEmpty(input.PostInspectSql))
-                    {
-                        string err;
-                        // Check if connection was left open by an error in the previous call to the stored procedure under test
-                        // Open the connection again if necessary
-                        if (con.State != ConnectionState.Open)
-                            con.Open();
+                        // Assign command properties;
+                        cmdProc.CommandType = CommandType.StoredProcedure;
+                        cmdProc.Connection = con;
+                        cmdProc.CommandTimeout = input.CommandTimeout ?? 0;
+                        cmdProc.CommandText = input.SpName;
+
+                        // The list of simple SqlParamInput models is set from the class Property or input model.
+                        // The PrepRun method only assigns the sqlParamInput objects to the list.
+                        // If sqlParamInputs are present, the SqlDataCommand.AddSqlParameters extension method will convert them to real Sql parameters and add them to the SqlDataCommand.
+                        if (input.SqlParams != null && input.SqlParams.Count > 0)
+                            cmdProc.AddSqlParameters(input.SqlParams);
+
+                        // Run Stored Proc to fill base Result Object
+                        // This is the main call to the Stored Procedure under test
+                        stopWatch.Start();
+                        actualResult = SpSqlClient.ExecProcNonQuery(cmdProc, input);
 
 
-                        //Run the post-inspect SQL to validate the database state after running the procedure under test
-                        //  Rows returned from this query will be added to the DbRows List.
-                        sqlResult = SpSqlClient.ExecSqlQuery(transaction, input.PostInspectSql);
 
-                        // If there is an error message
-                        if (!String.IsNullOrEmpty(sqlResult.ErrorMessage))
+                        // Check base results for error before continuing
+                        if (actualResult.ResultText == "Success")
                         {
-                            err = DebugLogger.CreateErrorDetail("SqlSpClient.ExecProcNonQuery.PostInspectSql", sqlResult.ErrorMessage);
-                            DebugLogger.LogError(err);
-                            actualResult.PostInspectResultText = err;
-                        }
-                        else
-                        {
-                            actualResult.DbRows = sqlResult.DbRows;
-                            actualResult.PostInspectResultText = "Success";
-                        }
+                            // If a post-inspect script is specified, run it - save error messages to the PostInspectResultText field
 
-                    }
-                    // Try to rollback the Transaction if input.Rollback is true
-                  
-                    if (input.Rollback)
-                    {
-                        try
-                        {
-                            transaction.Rollback();
-                        }
-                        catch (Exception e2)
-                        {
-                            // This catch block will handle rollback failure
-                            Debug.WriteLine("Rollback Exception Type: {0}", e2.GetType());
-                            Debug.WriteLine("  Message: {0}", e2.Message);
+
+                            // If Rollback is not true, complete the transaction
+                            try
+                            {
+                                if (!input.Rollback)
+                                    scope.Complete();
+
+                                if (!String.IsNullOrEmpty(input.PostInspectSql))
+                                {
+                                    //// Check if connection was left open by an error in the previous call to the stored procedure under test
+                                    //// Open the connection again if necessary
+                                    if (con.State != ConnectionState.Open)
+                                        con.Open();
+                                    // Record the results (uncommitted or committed depending on whether the scope was completed or not)
+                                    actualResult.RunPostInspectSql(cmdProc, input);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                // This catch block will handle commit / rollback failure
+                                string msg = $"Exception Type: {e.GetType()} | ";
+                                msg += $"Message: {e.Message}";
+                                DebugLogger.LogError(msg);
+                                actualResult.ResultText = msg;
+                            }
+
+                            if (con.State != ConnectionState.Closed)
+                                con.Close();
                         }
                     }
-                    // else try to commit the transaction
-                    else
-                    {
-                        try
-                        {
-
-                            transaction.Commit();
-
-                        }
-                        catch (Exception e2)
-                        {
-                            // This catch block will handle rollback failure
-                            string err = $"Commit Exception Type:{e2.GetType()} Message: {e2.Message}";
-                            Debug.WriteLine(err);
-                            actualResult.ResultText = err;
-                        }
-                    }
-
-                    if (con.State != ConnectionState.Closed)
-                        con.Close();
-
                 }
-
             }
             catch (Exception e)
             {
                 string errMsg = DebugLogger.CreateErrorDetail("SqlSpClient.ExecuteNonQuery", e.Message, e.InnerException?.Message);
-
-                DebugLogger.LogError(errMsg);
                 actualResult.ResultText = errMsg;
+                DebugLogger.LogError(errMsg);
+
             }
             //Add duration
             if (stopWatch != null)
@@ -218,69 +179,10 @@ namespace SQLProcTester
                 actualResult.Duration = (stopWatch.ElapsedMilliseconds);
             }
 
-
-
-
             //Capture json output if needed to create test case "expected" records.
             string jsonString = JsonConvert.SerializeObject(actualResult, Formatting.Indented);
 
             return actualResult;
-
-        }
-
-        private static void AddSqlParameters(this SqlCommand cmd, IEnumerable<SqlParamInput> paramsIn)
-        {
-            if (paramsIn == null)
-            {
-                paramsIn = new List<SqlParamInput>();
-            }
-
-            foreach (var input in paramsIn)
-            {
-                string type = input.Type.ToUpper();
-                string name = input.Name.Replace("@", "");
-                name = "@" + input.Name;
-                SqlParameter sqlParam = new SqlParameter(name, null);
-                try
-                {
-                    switch (type)
-                    {
-                        case "DATETIME":
-                        case "DATETIME2":
-                            sqlParam.SqlDbType = SqlDbType.DateTime;
-                            sqlParam.Value = Convert.ToDateTime(input.Value);
-                            break;
-                        case "NVARCHAR":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.NVarChar)
-                            { Value = input.Value.ToString() };
-                            break;
-                        case "VARCHAR":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.VarChar)
-                            { Value = input.Value.ToString() };
-                            break;
-                        case "INT":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Int)
-                            { Value = Convert.ToInt32(input.Value) };
-                            break;
-                        case "BIT":
-                            sqlParam = new SqlParameter(name, System.Data.SqlDbType.Bit)
-                            { Value = Convert.ToInt32(input.Value) };
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException("SqlParameter.Type", $"Invalid type specified for parameter: {name}");
-                    }
-
-                }
-                catch (Exception e)
-                {
-                    throw new Exception($"Parameter Exception - '{name}' : {e.Message}");
-                }
-                cmd.Parameters.Add(sqlParam);
-            }
-            // Add the ReturnValue Parameter last
-            var param = new SqlParameter("@ReturnValue", System.Data.SqlDbType.Int);
-            param.Direction = ParameterDirection.ReturnValue;
-            cmd.Parameters.Add(param);
 
         }
 
@@ -332,6 +234,28 @@ namespace SQLProcTester
             }
             rdr.Close();
             return dbRows;
+        }
+
+        private static void RunPostInspectSql(this SpExecResultNonQuery runResult, SqlCommand cmd, SpExecInputNonQuery input)
+        {
+            //Run the post-inspect SQL to validate the database state after running the procedure under test
+            cmd.CommandText = input.PostInspectSql;
+
+            //  Rows returned from this query will be added to the DbRows List.
+            var sqlResult = SpSqlClient.ExecSqlQuery(cmd, input.PostInspectSql);
+
+            // If there is an error message
+            if (!String.IsNullOrEmpty(sqlResult.ErrorMessage))
+            {
+                string err = DebugLogger.CreateErrorDetail("SqlSpClient.ExecProcNonQuery.PostInspectSql", sqlResult.ErrorMessage);
+                DebugLogger.LogError(err);
+                runResult.PostInspectResultText = err;
+            }
+            else
+            {
+                runResult.DbRows = sqlResult.DbRows;
+                runResult.PostInspectResultText = "Success";
+            }
         }
 
     }

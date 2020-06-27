@@ -8,8 +8,13 @@
     },
     {
       "Name": "firstName",
-      "Type": "Nvarchar",
+      "Type": "Nchar",
       "Value": "Babaduk"
+    },
+    {
+      "Name": "middleInitial",
+      "Type": "Char",
+      "Value": "B"
     },
     {
       "Name": "dateOfBirth",

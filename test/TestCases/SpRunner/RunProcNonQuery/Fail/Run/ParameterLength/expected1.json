@@ -1,0 +1,7 @@
+{
+  "PostInspectResultText": null,
+  "Duration": 5000,
+  "ReturnValue": null,
+  "ResultText": "ERROR! Object: SqlSpClient.Execute | Message: String or binary data would be truncated.\r\nThe statement has been terminated.",
+  "DbRows": null
+}

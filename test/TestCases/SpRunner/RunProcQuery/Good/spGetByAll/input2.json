@@ -9,8 +9,13 @@
     },
     {
       "Name": "firstName",
-      "Type": "Nvarchar",
+      "Type": "Nchar",
       "Value": "Blake"
+    },
+    {
+      "Name": "middleInitial",
+      "Type": "Char",
+      "Value": "B"
     },
     {
       "Name": "dateOfBirth",

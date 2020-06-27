@@ -1,0 +1,12 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spWaitForSeconds",
+  "CommandTimeout": 1,
+  "SqlParams": [
+    {
+      "Name": "seconds",
+      "Type": "Int",
+      "Value": 2
+    }
+  ]
+}

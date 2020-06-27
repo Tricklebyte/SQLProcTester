@@ -17,9 +17,9 @@ namespace SQLProcTester.Models
 
             bool retVal;
 
-            // check Equivalency of base class first by passing the base class type into the base class IsEquivalent method.
+            // check Equivalency of base class first
             //   
-            if (!this.IsEquivalent((SpExecResult)expected))
+            if (!base.IsEquivalent(expected))
             {
                 retVal = false;
                 string msg = DebugLogger.CreateErrorDetail("SpExecResultNonQuery", $"Equivalency check failed in base class SpExecResult.");
@@ -31,18 +31,14 @@ namespace SQLProcTester.Models
             }
 
 
-            // check equivalency of this child
+            // check equivalency of the child properties
             // PostInspectResultText
             if (this.PostInspectResultText != expected.PostInspectResultText)
             {
                 retVal = false;
                 DebugLogger.LogEquivalencyError("PostInspectResultText", this.PostInspectResultText, expected.PostInspectResultText);
             }
-            else
-                retVal = true;
-
-            // TODO- clean up use of base classes
-            // Once all the child properties have been checked call the IsEquivalent Method using the base result classes
+            
 
             return retVal;
         }

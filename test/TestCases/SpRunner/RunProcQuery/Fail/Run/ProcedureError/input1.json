@@ -1,0 +1,6 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spProcError1",
+  "SqlParams": [
+  ]
+}

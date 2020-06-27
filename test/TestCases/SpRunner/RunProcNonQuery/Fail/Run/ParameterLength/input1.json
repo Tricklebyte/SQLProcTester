@@ -1,0 +1,19 @@
+{
+  "ConnectionString": "Server=(localdb)\\MSSQLLocalDB;Database=SqlProcTest;Trusted_Connection=True;MultipleActiveResultSets=true",
+  "SpName": "spUpdateMiddleInitial",
+  "NonQuery": true,
+  "Rollback": true,
+  "SqlParams": [
+    {
+      "Name": "id",
+      "Type": "int",
+      "Value": "5"
+    },
+    {
+      "Name": "middleInitial",
+      "Type": "Char",
+      "Value": "Vlad"
+    }
+  ]
+
+}

@@ -1,0 +1,11 @@
+﻿	LastName	nvarchar(50)		
+	FirstName	nchar(50)	
+	MiddleName	char(10)	
+	DateOfBirth	datetime	
+	IsContractor	bit	
+	Position		varchar(50)	
+	StartDate		datetime2(7)	
+	EndDate		datetime2(7)	
+
+
+ALL
