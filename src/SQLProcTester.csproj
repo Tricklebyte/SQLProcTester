@@ -4,19 +4,28 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/Tricklebyte/SQLProcTester</RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <PackageTags></PackageTags>
+    <PackageReleaseNotes>Initial Release - SpRunner.RunProcQuery, SpRunner.RunProcNonQuery</PackageReleaseNotes>
+    <PackageIcon>download.png</PackageIcon>
+    <Description>SQL Server stored procedure testing library - executes stored procedures and returns test results.</Description>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.4" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.4" />
+
     <PackageReference Include="Microsoft.SqlServer.SqlManagementObjects" Version="160.2004021.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="..\img\download.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
     <None Include="..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

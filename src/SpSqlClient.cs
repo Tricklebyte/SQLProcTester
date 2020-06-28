@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.SqlServer.Management.Common;
-using Microsoft.SqlServer.Management.Smo;
+﻿
+
 using Newtonsoft.Json;
 using SQLProcTester.Models;
 using System;

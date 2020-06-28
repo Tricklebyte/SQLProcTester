@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{B0B66BF2-27B3-4CB9-9E35-D673ABEBA76D}"
 	ProjectSection(SolutionItems) = preProject
 		samples\SQL\dbo.EmployeePositionHistory.data.sql = samples\SQL\dbo.EmployeePositionHistory.data.sql
+		samples\SQL\SetupTestDb.sql = samples\SQL\SetupTestDb.sql
 		samples\SQL\SQLProcTester-Sample.sql = samples\SQL\SQLProcTester-Sample.sql
 	EndProjectSection
 EndProject
