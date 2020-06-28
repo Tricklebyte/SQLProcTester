@@ -12,25 +12,13 @@ namespace SQLProcTester
 {
     public static class SpRunner
     {
-        // Local variables are passed to the the private methods to execute the stored procedure
-        // These local variables will be set to either: 
+        // Order of precedence:
         // a.) value present in the input object
         // b.) value assigned to class properties if input file is not present.
         // In the absence of all parameter values, the stored procedure will be called with no parameters    
-        private static string runConnection;
         private static int runCommandTimoeout;
         private static string runProcedureName;
         private static List<SqlParamInput> runParams;
-        private static bool runNonQuery;
-
-
-
-        // When Non-Query is true, the SqlDataCommand.ExecuteNonQuery method will be used instead of the SqlDataReader
-        //                          and SpExecResult.RowsAffected will populated.
-        public static bool NonQuery
-        {
-            get => runNonQuery; set => runNonQuery = value;
-        }
 
 
         // Stored Procedure Name
@@ -48,7 +36,6 @@ namespace SQLProcTester
 
 
         public static string ConnectionString { get; set; }
-
 
 
         // simple SqlParamInput models are use for input.
